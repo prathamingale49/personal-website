@@ -23,6 +23,9 @@ export const ScrollCircuit: React.FC = () => {
   const nodesRef = useRef<CircuitNode[]>([]);
   const animationRef = useRef<number>(0);
   const scrollPercentRef = useRef<number>(0);
+  const lastScrollPositionRef = useRef<number>(0);
+  const isScrollingDownRef = useRef<boolean>(false);
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -151,8 +154,21 @@ export const ScrollCircuit: React.FC = () => {
       
       scrollPercentRef.current = scrollTop / scrollHeight;
 
-      // Activate connections based on scroll position
-      activateConnectionsByScroll(scrollPercentRef.current);
+      // Check if scrolling down
+      const isScrollingDown = scrollTop > lastScrollPositionRef.current;
+      lastScrollPositionRef.current = scrollTop;
+      isScrollingDownRef.current = isScrollingDown;
+
+      // Only activate connections when scrolling down
+      if (isScrollingDown) {
+        activateConnectionsByScroll(scrollPercentRef.current);
+        
+        // Reset the timeout to stop animation after a brief period
+        if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = setTimeout(() => {
+          isScrollingDownRef.current = false;
+        }, 200); // Animation will continue for 200ms after scrolling stops
+      }
     };
 
     // Activate specific connections based on scroll percentage
@@ -176,7 +192,7 @@ export const ScrollCircuit: React.FC = () => {
       
       uniqueConnections.forEach((item, index) => {
         if (index < connectionsToActivate) {
-          item.connection.active = true;
+          item.connection.active = true && isScrollingDownRef.current;
           
           // Activate in alternating directions for visual interest
           if (index % 2 === 0) {
@@ -207,7 +223,7 @@ export const ScrollCircuit: React.FC = () => {
           ctx.stroke();
           
           // Draw current flowing through active connections
-          if (connection.active) {
+          if (connection.active && isScrollingDownRef.current) {
             const dx = connection.node.x - node.x;
             const dy = connection.node.y - node.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
@@ -278,6 +294,7 @@ export const ScrollCircuit: React.FC = () => {
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
   }, []);
 
