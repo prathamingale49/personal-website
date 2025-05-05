@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
 
+type ComponentType = "resistor" | "capacitor" | "inductor" | "battery" | "transistor" | "opamp";
+
 interface CircuitComponent {
   x: number;
   y: number;
-  type: "resistor" | "capacitor" | "inductor" | "battery" | "transistor" | "opamp";
+  type: ComponentType;
   connections: CircuitComponent[];
 }
 
@@ -20,141 +22,121 @@ export const ScrollCircuit: React.FC = () => {
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      createCircuit();
+      canvas.height = document.body.scrollHeight;
+      generateComponents();
     };
 
-    const createCircuit = () => {
-      componentsRef.current = [];
-      const totalHeight = document.body.scrollHeight;
-      const spacing = 200;
-
+    const generateComponents = () => {
       const leftX = window.innerWidth * 0.1;
       const rightX = window.innerWidth * 0.9;
+      const height = document.body.scrollHeight;
+      const spacing = 200;
+      const types: ComponentType[] = ["resistor", "capacitor", "inductor", "battery", "transistor", "opamp"];
+      const getType = () => types[Math.floor(Math.random() * types.length * 0.5)];
 
-      const types = ["resistor", "capacitor", "inductor", "battery", "resistor", "resistor", "transistor", "resistor", "opamp"];
+      const leftComponents: CircuitComponent[] = [];
+      const rightComponents: CircuitComponent[] = [];
 
-      const createColumn = (x: number) => {
-        const column: CircuitComponent[] = [];
-        for (let i = 100, j = 0; i < totalHeight - 100; i += spacing, j++) {
-          const type = types[j % types.length] as CircuitComponent["type"];
-          column.push({ x, y: i, type, connections: [] });
-        }
-        return column;
-      };
-
-      const leftColumn = createColumn(leftX);
-      const rightColumn = createColumn(rightX);
-
-      // Connect vertical
-      for (let i = 0; i < leftColumn.length - 1; i++) {
-        leftColumn[i].connections.push(leftColumn[i + 1]);
-        rightColumn[i].connections.push(rightColumn[i + 1]);
+      for (let y = 100; y < height - 100; y += spacing) {
+        leftComponents.push({ x: leftX, y, type: getType(), connections: [] });
+        rightComponents.push({ x: rightX, y, type: getType(), connections: [] });
       }
 
-      // Connect horizontal
-      for (let i = 0; i < Math.min(leftColumn.length, rightColumn.length); i += 2) {
-        leftColumn[i].connections.push(rightColumn[i]);
-        rightColumn[i].connections.push(leftColumn[i]);
+      for (let i = 0; i < leftComponents.length - 1; i++) {
+        connect(leftComponents[i], leftComponents[i + 1]);
+        connect(rightComponents[i], rightComponents[i + 1]);
       }
 
-      componentsRef.current = [...leftColumn, ...rightColumn];
+      for (let i = 0; i < leftComponents.length; i += 2) {
+        connect(leftComponents[i], rightComponents[i]);
+      }
+
+      componentsRef.current = [...leftComponents, ...rightComponents];
+    };
+
+    const connect = (a: CircuitComponent, b: CircuitComponent) => {
+      a.connections.push(b);
+      b.connections.push(a);
     };
 
     const drawComponent = (ctx: CanvasRenderingContext2D, c: CircuitComponent) => {
-      ctx.strokeStyle = "#777";
-      ctx.lineWidth = 1;
-      ctx.fillStyle = "#aaa";
+      ctx.save();
+      ctx.translate(c.x, c.y);
+      ctx.strokeStyle = "#999";
+      ctx.lineWidth = 2;
 
       switch (c.type) {
-        case "resistor": {
+        case "resistor":
           ctx.beginPath();
-          ctx.moveTo(c.x - 10, c.y);
-          for (let i = 0; i < 4; i++) {
-            ctx.lineTo(c.x - 6 + i * 4, c.y - 6 * (i % 2 === 0 ? 1 : -1));
-          }
-          ctx.lineTo(c.x + 10, c.y);
-          ctx.stroke();
-          break;
-        }
-        case "capacitor": {
-          ctx.beginPath();
-          ctx.moveTo(c.x - 10, c.y);
-          ctx.lineTo(c.x - 2, c.y);
-          ctx.moveTo(c.x + 2, c.y);
-          ctx.lineTo(c.x + 10, c.y);
-          ctx.moveTo(c.x - 2, c.y - 8);
-          ctx.lineTo(c.x - 2, c.y + 8);
-          ctx.moveTo(c.x + 2, c.y - 8);
-          ctx.lineTo(c.x + 2, c.y + 8);
-          ctx.stroke();
-          break;
-        }
-        case "inductor": {
-          ctx.beginPath();
-          for (let i = -2; i <= 2; i++) {
-            ctx.arc(c.x + i * 5, c.y, 5, Math.PI, 0);
+          for (let i = -20; i <= 20; i += 10) {
+            ctx.lineTo(i, (i % 20 === 0 ? -10 : 10));
           }
           ctx.stroke();
           break;
-        }
-        case "battery": {
+        case "capacitor":
           ctx.beginPath();
-          ctx.moveTo(c.x - 6, c.y - 10);
-          ctx.lineTo(c.x - 6, c.y + 10);
-          ctx.moveTo(c.x + 6, c.y - 6);
-          ctx.lineTo(c.x + 6, c.y + 6);
+          ctx.moveTo(-10, -15);
+          ctx.lineTo(-10, 15);
+          ctx.moveTo(10, -15);
+          ctx.lineTo(10, 15);
           ctx.stroke();
           break;
-        }
-        case "transistor": {
+        case "inductor":
           ctx.beginPath();
-          ctx.moveTo(c.x, c.y);
-          ctx.lineTo(c.x + 10, c.y - 10);
-          ctx.moveTo(c.x, c.y);
-          ctx.lineTo(c.x + 10, c.y + 10);
-          ctx.moveTo(c.x - 10, c.y);
-          ctx.lineTo(c.x, c.y);
+          for (let i = -20; i <= 20; i += 10) {
+            ctx.arc(i, 0, 5, 0, Math.PI);
+          }
           ctx.stroke();
           break;
-        }
-        case "opamp": {
+        case "battery":
           ctx.beginPath();
-          ctx.moveTo(c.x - 10, c.y - 10);
-          ctx.lineTo(c.x + 10, c.y);
-          ctx.lineTo(c.x - 10, c.y + 10);
+          ctx.moveTo(-6, -15);
+          ctx.lineTo(-6, 15);
+          ctx.moveTo(6, -10);
+          ctx.lineTo(6, 10);
+          ctx.stroke();
+          break;
+        case "transistor":
+          ctx.beginPath();
+          ctx.moveTo(-10, 0);
+          ctx.lineTo(0, 0);
+          ctx.lineTo(10, -10);
+          ctx.moveTo(0, 0);
+          ctx.lineTo(10, 10);
+          ctx.stroke();
+          break;
+        case "opamp":
+          ctx.beginPath();
+          ctx.moveTo(-20, -20);
+          ctx.lineTo(20, 0);
+          ctx.lineTo(-20, 20);
           ctx.closePath();
           ctx.stroke();
-          ctx.fillText("+", c.x - 15, c.y - 4);
-          ctx.fillText("-", c.x - 15, c.y + 10);
+          ctx.fillText("+", -18, -5);
+          ctx.fillText("-", -18, 10);
           break;
-        }
       }
-    };
 
-    const drawConnections = (ctx: CanvasRenderingContext2D, components: CircuitComponent[]) => {
-      ctx.strokeStyle = "#333";
-      ctx.lineWidth = 1;
-      components.forEach(c => {
-        c.connections.forEach(conn => {
-          ctx.beginPath();
-          ctx.moveTo(c.x, c.y);
-          ctx.lineTo(conn.x, conn.y);
-          ctx.stroke();
-        });
-      });
+      ctx.restore();
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawConnections(ctx, componentsRef.current);
-      componentsRef.current.forEach(c => drawComponent(ctx, c));
+      componentsRef.current.forEach((c) => {
+        drawComponent(ctx, c);
+        c.connections.forEach((target) => {
+          ctx.beginPath();
+          ctx.moveTo(c.x, c.y);
+          ctx.lineTo(target.x, target.y);
+          ctx.strokeStyle = "rgba(120,120,120,0.1)";
+          ctx.stroke();
+        });
+      });
       requestAnimationFrame(animate);
     };
 
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
-    window.addEventListener("scroll", () => {}); // placeholder for scroll-reactive animations
     requestAnimationFrame(animate);
 
     return () => {
@@ -162,5 +144,5 @@ export const ScrollCircuit: React.FC = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="w-full h-full fixed top-0 left-0 pointer-events-none opacity-30 z-0" />;
+  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full opacity-30 z-0" />;
 };
