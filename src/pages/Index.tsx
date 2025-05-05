@@ -1,11 +1,75 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from "react";
+import { CircuitAnimation } from "../components/CircuitAnimation";
+import { ProfileSection } from "../components/ProfileSection";
+import { ProjectsSection } from "../components/ProjectsSection";
+import { ExperienceSection } from "../components/ExperienceSection";
+import { SkillsSection } from "../components/SkillsSection";
+import { ContactSection } from "../components/ContactSection";
+import { Footer } from "../components/Footer";
 
 const Index = () => {
+  useEffect(() => {
+    // For smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href) {
+          document.querySelector(href)?.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="fixed top-0 left-0 w-full h-full z-0 opacity-30">
+        <CircuitAnimation />
+      </div>
+      <div className="relative z-10">
+        <header className="py-6 px-4 md:px-8 lg:px-16 fixed w-full top-0 bg-gray-900/80 backdrop-blur-md z-20">
+          <nav className="flex justify-between items-center max-w-7xl mx-auto">
+            <div className="text-cyan-400 font-bold text-2xl">EE.Portfolio</div>
+            <ul className="hidden md:flex gap-8">
+              <li><a href="#home" className="hover:text-cyan-400 transition-colors">Home</a></li>
+              <li><a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a></li>
+              <li><a href="#experience" className="hover:text-cyan-400 transition-colors">Experience</a></li>
+              <li><a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <main className="pt-24 pb-12">
+          <section id="home" className="min-h-screen flex items-center">
+            <ProfileSection />
+          </section>
+
+          <section id="projects" className="py-16 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+            <ProjectsSection />
+          </section>
+
+          <section id="experience" className="py-16 px-4 md:px-8 lg:px-16 bg-gray-800/50 backdrop-blur-sm">
+            <div className="max-w-7xl mx-auto">
+              <ExperienceSection />
+            </div>
+          </section>
+
+          <section id="skills" className="py-16 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+            <SkillsSection />
+          </section>
+
+          <section id="contact" className="py-16 px-4 md:px-8 lg:px-16 bg-gray-800/50 backdrop-blur-sm">
+            <div className="max-w-7xl mx-auto">
+              <ContactSection />
+            </div>
+          </section>
+        </main>
+
+        <Footer />
       </div>
     </div>
   );
