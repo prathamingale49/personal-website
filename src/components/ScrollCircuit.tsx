@@ -97,7 +97,7 @@ export const ScrollCircuit: React.FC = () => {
           
           const componentNode = createNode(midX, midY);
           componentNode.radius = 6; // Larger component
-          componentNode.color = '#00FFAA'; // Different color for components
+          componentNode.color = '#5c5c5c'; // Different color for components (darker gray)
           
           connectNodes(leftPathNodes[i], componentNode);
           connectNodes(componentNode, rightPathNodes[i]);
@@ -115,7 +115,7 @@ export const ScrollCircuit: React.FC = () => {
         y,
         radius: 3 + Math.random() * 2,
         connections: [],
-        color: '#00FFFF',
+        color: '#444444', // Changed to dark gray
         pulseRadius: 0,
         maxPulseRadius: 15 + Math.random() * 10,
         pulseActive: false,
@@ -202,7 +202,7 @@ export const ScrollCircuit: React.FC = () => {
           ctx.beginPath();
           ctx.moveTo(node.x, node.y);
           ctx.lineTo(connection.node.x, connection.node.y);
-          ctx.strokeStyle = 'rgba(0, 255, 255, 0.15)';
+          ctx.strokeStyle = 'rgba(90, 90, 90, 0.15)'; // Changed to gray
           ctx.lineWidth = 1;
           ctx.stroke();
           
@@ -225,7 +225,7 @@ export const ScrollCircuit: React.FC = () => {
             // Draw current pulse
             ctx.beginPath();
             ctx.arc(currentX, currentY, 3, 0, Math.PI * 2);
-            ctx.fillStyle = '#FFFFFF';
+            ctx.fillStyle = '#AAAAAA'; // Changed to light gray
             ctx.fill();
             
             // Draw glow effect
@@ -233,8 +233,8 @@ export const ScrollCircuit: React.FC = () => {
               currentX, currentY, 0,
               currentX, currentY, 10
             );
-            gradient.addColorStop(0, 'rgba(0, 255, 255, 0.7)');
-            gradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
+            gradient.addColorStop(0, 'rgba(150, 150, 150, 0.7)'); // Changed to gray
+            gradient.addColorStop(1, 'rgba(100, 100, 100, 0)');
             
             ctx.beginPath();
             ctx.arc(currentX, currentY, 10, 0, Math.PI * 2);
@@ -254,8 +254,8 @@ export const ScrollCircuit: React.FC = () => {
           node.x, node.y, 0,
           node.x, node.y, node.radius * 2
         );
-        nodeGradient.addColorStop(0, 'rgba(0, 255, 255, 0.4)');
-        nodeGradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
+        nodeGradient.addColorStop(0, 'rgba(120, 120, 120, 0.4)'); // Changed to gray
+        nodeGradient.addColorStop(1, 'rgba(80, 80, 80, 0)');
         
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius * 2, 0, Math.PI * 2);
