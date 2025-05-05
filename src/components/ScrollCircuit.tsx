@@ -1,148 +1,212 @@
 import React, { useEffect, useRef } from "react";
 
-type ComponentType = "resistor" | "capacitor" | "inductor" | "battery" | "transistor" | "opamp";
+/**
+ * Schematic‑style scroll‑reactive circuit animation.
+ * This is rebuilt from the **original working node version** but swaps the dots for real EE symbols.
+ * Components are kept extremely lightweight so any mistake shows up quickly during debugging.
+ */
 
-interface CircuitComponent {
+type ComponentType =
+  | "resistor"
+  | "capacitor"
+  | "inductor"
+  | "battery"
+  | "transistor"
+  | "opamp";
+
+interface Comp {
   x: number;
   y: number;
   type: ComponentType;
-  connections: CircuitComponent[];
+  links: Comp[];
 }
 
 export const ScrollCircuit: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const componentsRef = useRef<CircuitComponent[]>([]);
+  const compsRef = useRef<Comp[]>([]);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    ctxRef.current = ctx;
 
-    const resizeCanvas = () => {
+    // ───────────────────────────── Set canvas dims
+    const fit = () => {
       canvas.width = window.innerWidth;
       canvas.height = document.body.scrollHeight;
-      generateComponents();
+      build();
     };
 
-    const generateComponents = () => {
-      const leftX = window.innerWidth * 0.1;
-      const rightX = window.innerWidth * 0.9;
-      const height = document.body.scrollHeight;
+    // ───────────────────────────── Build component graph
+    const build = () => {
+      const L = window.innerWidth * 0.12;
+      const R = window.innerWidth * 0.88;
       const spacing = 200;
-      const types: ComponentType[] = ["resistor", "capacitor", "inductor", "battery", "transistor", "opamp"];
-      const getType = () => types[Math.floor(Math.random() * types.length * 0.5)];
+      const h = document.body.scrollHeight;
+      const types: ComponentType[] = [
+        "resistor",
+        "capacitor",
+        "inductor",
+        "resistor",
+        "battery",
+        "resistor",
+        "transistor",
+        "resistor",
+        "opamp",
+      ];
 
-      const leftComponents: CircuitComponent[] = [];
-      const rightComponents: CircuitComponent[] = [];
+      const makeCol = (x: number) => {
+        const col: Comp[] = [];
+        for (let y = 120, i = 0; y < h - 120; y += spacing, i++) {
+          col.push({ x, y, type: types[i % types.length], links: [] });
+        }
+        return col;
+      };
 
-      for (let y = 100; y < height - 100; y += spacing) {
-        leftComponents.push({ x: leftX, y, type: getType(), connections: [] });
-        rightComponents.push({ x: rightX, y, type: getType(), connections: [] });
+      const left = makeCol(L);
+      const right = makeCol(R);
+
+      // vertical links
+      for (let i = 0; i < left.length - 1; i++) {
+        link(left[i], left[i + 1]);
+        link(right[i], right[i + 1]);
+      }
+      // bridges every two steps
+      for (let i = 0; i < Math.min(left.length, right.length); i += 2) {
+        link(left[i], right[i]);
       }
 
-      for (let i = 0; i < leftComponents.length - 1; i++) {
-        connect(leftComponents[i], leftComponents[i + 1]);
-        connect(rightComponents[i], rightComponents[i + 1]);
-      }
-
-      for (let i = 0; i < leftComponents.length; i += 2) {
-        connect(leftComponents[i], rightComponents[i]);
-      }
-
-      componentsRef.current = [...leftComponents, ...rightComponents];
+      compsRef.current = [...left, ...right];
     };
 
-    const connect = (a: CircuitComponent, b: CircuitComponent) => {
-      a.connections.push(b);
-      b.connections.push(a);
+    const link = (a: Comp, b: Comp) => {
+      a.links.push(b);
+      b.links.push(a);
     };
 
-    const drawComponent = (ctx: CanvasRenderingContext2D, c: CircuitComponent) => {
+    // ───────────────────────────── Draw helpers
+    const drawSymbol = (c: Comp, ctx: CanvasRenderingContext2D) => {
       ctx.save();
       ctx.translate(c.x, c.y);
-      ctx.strokeStyle = "#999";
+      ctx.strokeStyle = "#888";
       ctx.lineWidth = 2;
 
       switch (c.type) {
-        case "resistor":
+        case "resistor": {
           ctx.beginPath();
-          for (let i = -20; i <= 20; i += 10) {
-            ctx.lineTo(i, (i % 20 === 0 ? -10 : 10));
+          ctx.moveTo(-12, 0);
+          ctx.lineTo(-8, -6);
+          ctx.lineTo(-4, 6);
+          ctx.lineTo(0, -6);
+          ctx.lineTo(4, 6);
+          ctx.lineTo(8, -6);
+          ctx.lineTo(12, 0);
+          ctx.stroke();
+          break;
+        }
+        case "capacitor": {
+          ctx.beginPath();
+          ctx.moveTo(-12, 0);
+          ctx.lineTo(-2, 0);
+          ctx.moveTo(-2, -10);
+          ctx.lineTo(-2, 10);
+          ctx.moveTo(2, -10);
+          ctx.lineTo(2, 10);
+          ctx.moveTo(2, 0);
+          ctx.lineTo(12, 0);
+          ctx.stroke();
+          break;
+        }
+        case "inductor": {
+          ctx.beginPath();
+          for (let i = -2; i <= 2; i++) {
+            ctx.arc(i * 6, 0, 6, Math.PI, 0);
           }
           ctx.stroke();
           break;
-        case "capacitor":
+        }
+        case "battery": {
           ctx.beginPath();
-          ctx.moveTo(-10, -15);
-          ctx.lineTo(-10, 15);
-          ctx.moveTo(10, -15);
-          ctx.lineTo(10, 15);
+          ctx.moveTo(-6, -12);
+          ctx.lineTo(-6, 12);
+          ctx.moveTo(6, -6);
+          ctx.lineTo(6, 6);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(-12, 0);
+          ctx.lineTo(-6, 0);
+          ctx.moveTo(6, 0);
+          ctx.lineTo(12, 0);
           ctx.stroke();
           break;
-        case "inductor":
-          ctx.beginPath();
-          for (let i = -20; i <= 20; i += 10) {
-            ctx.arc(i, 0, 5, 0, Math.PI);
-          }
-          ctx.stroke();
-          break;
-        case "battery":
-          ctx.beginPath();
-          ctx.moveTo(-6, -15);
-          ctx.lineTo(-6, 15);
-          ctx.moveTo(6, -10);
-          ctx.lineTo(6, 10);
-          ctx.stroke();
-          break;
-        case "transistor":
+        }
+        case "transistor": {
+          // simple NPN-ish symbol
           ctx.beginPath();
           ctx.moveTo(-10, 0);
           ctx.lineTo(0, 0);
-          ctx.lineTo(10, -10);
+          ctx.lineTo(8, -10);
           ctx.moveTo(0, 0);
-          ctx.lineTo(10, 10);
+          ctx.lineTo(8, 10);
           ctx.stroke();
           break;
-        case "opamp":
+        }
+        case "opamp": {
           ctx.beginPath();
-          ctx.moveTo(-20, -20);
-          ctx.lineTo(20, 0);
-          ctx.lineTo(-20, 20);
+          ctx.moveTo(-14, -14);
+          ctx.lineTo(14, 0);
+          ctx.lineTo(-14, 14);
           ctx.closePath();
           ctx.stroke();
-          ctx.fillText("+", -18, -5);
+          ctx.font = "10px sans-serif";
+          ctx.fillStyle = "#aaa";
+          ctx.fillText("+", -18, -4);
           ctx.fillText("-", -18, 10);
           break;
+        }
       }
-
       ctx.restore();
     };
 
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      componentsRef.current.forEach((c) => {
-        drawComponent(ctx, c);
-        c.connections.forEach((target) => {
+    const drawLinks = (ctx: CanvasRenderingContext2D) => {
+      ctx.strokeStyle = "rgba(140,140,140,0.15)";
+      ctx.lineWidth = 1;
+      compsRef.current.forEach((c) => {
+        c.links.forEach((t) => {
           ctx.beginPath();
           ctx.moveTo(c.x, c.y);
-          ctx.lineTo(target.x, target.y);
-          ctx.strokeStyle = "rgba(120,120,120,0.1)";
+          ctx.lineTo(t.x, t.y);
           ctx.stroke();
         });
       });
-      requestAnimationFrame(animate);
     };
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    requestAnimationFrame(animate);
+    // ───────────────────────────── Animation loop
+    const paint = () => {
+      const ctx = ctxRef.current;
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawLinks(ctx);
+      compsRef.current.forEach((c) => drawSymbol(c, ctx));
+      requestAnimationFrame(paint);
+    };
+
+    fit();
+    window.addEventListener("resize", fit);
+    requestAnimationFrame(paint);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("resize", fit);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full opacity-30 z-0" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-30 z-0"
+    />
+  );
 };
