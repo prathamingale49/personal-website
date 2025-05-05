@@ -1,6 +1,6 @@
 
 import React, { useEffect } from "react";
-import { CircuitAnimation } from "../components/CircuitAnimation";
+import { ScrollCircuit } from "../components/ScrollCircuit";
 import { ProfileSection } from "../components/ProfileSection";
 import { ProjectsSection } from "../components/ProjectsSection";
 import { ExperienceSection } from "../components/ExperienceSection";
@@ -27,7 +27,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="fixed top-0 left-0 w-full h-full z-0 opacity-30">
-        <CircuitAnimation />
+        <ScrollCircuit />
       </div>
       <div className="relative z-10">
         <header className="py-6 px-4 md:px-8 lg:px-16 fixed w-full top-0 bg-gray-900/80 backdrop-blur-md z-20">
