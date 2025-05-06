@@ -37,7 +37,7 @@ export const ScrollCircuit: React.FC = () => {
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight; // same as original – ensures first screen visible
+      canvas.height = window.innerHeight;
       createCircuitNodes();
     };
 
@@ -45,56 +45,65 @@ export const ScrollCircuit: React.FC = () => {
       "resistor",
       "capacitor",
       "inductor",
+      "opamp", // Added more op-amps in the cycle
       "resistor",
       "battery",
+      "opamp", // Added more op-amps in the cycle
       "resistor",
       "transistor",
-      "resistor",
-      "opamp",
+      "opamp", // Added more op-amps in the cycle
     ];
 
     const createCircuitNodes = () => {
       nodesRef.current = [];
-      const leftX = window.innerWidth * 0.1;
-      const rightX = window.innerWidth * 0.9;
       const totalHeight = document.body.scrollHeight;
-      const nodeDistance = 200;
-
-      const makePath = (x: number) => {
-        const path: CircuitNode[] = [];
-        for (let y = 100, i = 0; y < totalHeight - 100; y += nodeDistance, i++) {
-          path.push(createNode(x, y, componentCycle[i % componentCycle.length]));
+      const nodeDistance = 180; // Decreased for more nodes
+      
+      // Create a more complex network with nodes across the entire width
+      const createNodesInArea = (minX: number, maxX: number, minY: number, maxY: number, density: number) => {
+        const nodes: CircuitNode[] = [];
+        const count = Math.floor(density * (maxX - minX) * (maxY - minY) / 10000);
+        
+        for (let i = 0; i < count; i++) {
+          const x = minX + Math.random() * (maxX - minX);
+          const y = minY + Math.random() * (maxY - minY);
+          const type = componentCycle[Math.floor(Math.random() * componentCycle.length)];
+          nodes.push(createNode(x, y, type));
         }
-        return path;
+        return nodes;
       };
+      
+      // Create main vertical paths (left, center, and right)
+      const leftPathNodes = createVerticalPath(window.innerWidth * 0.1, nodeDistance, componentCycle);
+      const centerPathNodes = createVerticalPath(window.innerWidth * 0.5, nodeDistance, componentCycle);
+      const rightPathNodes = createVerticalPath(window.innerWidth * 0.9, nodeDistance, componentCycle);
+      
+      // Create random nodes in between to create a messy network
+      const randomNodes = createNodesInArea(
+        window.innerWidth * 0.05, 
+        window.innerWidth * 0.95, 
+        100, 
+        totalHeight - 100, 
+        0.5 // Density factor
+      );
 
-      const leftPathNodes = makePath(leftX);
-      const rightPathNodes = makePath(rightX);
+      // Connect vertical paths
+      connectVerticalPath(leftPathNodes);
+      connectVerticalPath(centerPathNodes);
+      connectVerticalPath(rightPathNodes);
+      
+      // Connect horizontal and diagonal paths between main paths
+      connectPathsHorizontally(leftPathNodes, centerPathNodes);
+      connectPathsHorizontally(centerPathNodes, rightPathNodes);
+      connectPathsDiagonally(leftPathNodes, rightPathNodes);
+      
+      // Connect random nodes to create a messy network
+      connectRandomNodes(randomNodes, [...leftPathNodes, ...centerPathNodes, ...rightPathNodes]);
+      
+      // Create some opamp integrations
+      createOpampCircuits(leftPathNodes, centerPathNodes, rightPathNodes);
 
-      const horizontalConnections = Math.min(leftPathNodes.length, rightPathNodes.length);
-      for (let i = 0; i < horizontalConnections; i += 2) {
-        connectNodes(leftPathNodes[i], rightPathNodes[i]);
-      }
-
-      for (let i = 0; i < leftPathNodes.length - 1; i++) connectNodes(leftPathNodes[i], leftPathNodes[i + 1]);
-      for (let i = 0; i < rightPathNodes.length - 1; i++) connectNodes(rightPathNodes[i], rightPathNodes[i + 1]);
-
-      for (let i = 0; i < Math.min(leftPathNodes.length, rightPathNodes.length) - 1; i += 3) {
-        if (leftPathNodes[i] && rightPathNodes[i + 1]) connectNodes(leftPathNodes[i], rightPathNodes[i + 1]);
-        if (rightPathNodes[i] && leftPathNodes[i + 1]) connectNodes(rightPathNodes[i], leftPathNodes[i + 1]);
-      }
-
-      for (let i = 1; i < Math.min(leftPathNodes.length, rightPathNodes.length) - 1; i += 2) {
-        const midX = (leftPathNodes[i].x + rightPathNodes[i].x) / 2;
-        const midY = (leftPathNodes[i].y + rightPathNodes[i].y) / 2;
-        const componentNode = createNode(midX, midY, "opamp");
-        componentNode.radius = 6;
-        componentNode.color = "#5c5c5c";
-        connectNodes(leftPathNodes[i], componentNode);
-        connectNodes(componentNode, rightPathNodes[i]);
-      }
-
-      nodesRef.current = [...leftPathNodes, ...rightPathNodes];
+      nodesRef.current = [...leftPathNodes, ...centerPathNodes, ...rightPathNodes, ...randomNodes];
     };
 
     const createNode = (x: number, y: number, type: CircuitNode["type"]): CircuitNode => ({
@@ -103,14 +112,15 @@ export const ScrollCircuit: React.FC = () => {
       radius: 4,
       type,
       connections: [],
-      color: "#444",
+      color: "#a855f7", // Neon purple for better visibility
       pulseRadius: 0,
-      maxPulseRadius: 15,
+      maxPulseRadius: 18, // Increased for better visibility
       pulseActive: false,
       pulseSpeed: 0.6,
     });
 
     const connectNodes = (a: CircuitNode, b: CircuitNode) => {
+      if (!a || !b) return; // Safeguard
       const link = {
         node: b,
         currentPosition: 0,
@@ -121,6 +131,89 @@ export const ScrollCircuit: React.FC = () => {
       b.connections.push({ ...link, node: a });
     };
 
+    const createVerticalPath = (x: number, nodeDistance: number, componentTypes: CircuitNode["type"][]) => {
+      const path: CircuitNode[] = [];
+      const totalHeight = document.body.scrollHeight;
+      for (let y = 100, i = 0; y < totalHeight - 100; y += nodeDistance, i++) {
+        // Add some randomness to x position for less rectangular feel
+        const randomX = x + (Math.random() - 0.5) * 40;
+        path.push(createNode(randomX, y, componentTypes[i % componentTypes.length]));
+      }
+      return path;
+    };
+
+    const connectVerticalPath = (path: CircuitNode[]) => {
+      for (let i = 0; i < path.length - 1; i++) {
+        connectNodes(path[i], path[i + 1]);
+      }
+    };
+
+    const connectPathsHorizontally = (path1: CircuitNode[], path2: CircuitNode[]) => {
+      const connections = Math.min(path1.length, path2.length);
+      for (let i = 0; i < connections; i += 2) {
+        connectNodes(path1[i], path2[i]);
+      }
+    };
+
+    const connectPathsDiagonally = (path1: CircuitNode[], path2: CircuitNode[]) => {
+      const connections = Math.min(path1.length, path2.length) - 1;
+      for (let i = 0; i < connections; i += 3) {
+        connectNodes(path1[i], path2[i + 1]);
+        connectNodes(path1[i + 1], path2[i]);
+      }
+    };
+
+    const connectRandomNodes = (randomNodes: CircuitNode[], structuredNodes: CircuitNode[]) => {
+      // Connect each random node to 2-4 other nodes
+      randomNodes.forEach(node => {
+        const connectionsCount = 2 + Math.floor(Math.random() * 3);
+        const availableNodes = [...randomNodes, ...structuredNodes].filter(n => n !== node);
+        
+        // Find closest nodes to connect to
+        const sortedByDistance = availableNodes.sort((a, b) => {
+          const distA = Math.sqrt((a.x - node.x) ** 2 + (a.y - node.y) ** 2);
+          const distB = Math.sqrt((b.x - node.x) ** 2 + (b.y - node.y) ** 2);
+          return distA - distB;
+        });
+        
+        // Connect to closest nodes
+        for (let i = 0; i < Math.min(connectionsCount, sortedByDistance.length); i++) {
+          if (Math.random() < 0.7) { // 70% chance to connect for organic feel
+            connectNodes(node, sortedByDistance[i]);
+          }
+        }
+      });
+    };
+    
+    const createOpampCircuits = (leftPath: CircuitNode[], centerPath: CircuitNode[], rightPath: CircuitNode[]) => {
+      // Create some special opamp circuit formations
+      const paths = [leftPath, centerPath, rightPath];
+      
+      // Add opamp circuits at various places
+      for (let i = 2; i < Math.min(leftPath.length, rightPath.length, centerPath.length); i += 3) {
+        const sourcePath = paths[i % 3];
+        const targetPath = paths[(i + 1) % 3];
+        
+        if (sourcePath[i] && targetPath[i - 1]) {
+          // Create an opamp node
+          const midX = (sourcePath[i].x + targetPath[i - 1].x) / 2;
+          const midY = (sourcePath[i].y + targetPath[i - 1].y) / 2;
+          const opamp = createNode(midX, midY, "opamp");
+          opamp.radius = 6; // Slightly larger for visibility
+          
+          // Connect in a feedback configuration (common in circuit design)
+          connectNodes(sourcePath[i], opamp);
+          connectNodes(opamp, targetPath[i - 1]);
+          
+          if (targetPath[i]) {
+            connectNodes(targetPath[i - 1], targetPath[i]); // Feedback path
+          }
+          
+          nodesRef.current.push(opamp);
+        }
+      }
+    };
+
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - window.innerHeight;
@@ -128,22 +221,54 @@ export const ScrollCircuit: React.FC = () => {
       const down = scrollTop > lastScrollPositionRef.current;
       lastScrollPositionRef.current = scrollTop;
       isScrollingDownRef.current = down;
-      if (down) {
-        activateConnectionsByScroll(scrollPercentRef.current);
-        if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-        scrollTimeoutRef.current = setTimeout(() => (isScrollingDownRef.current = false), 200);
-      }
+      
+      // Activate connections based on exact scroll position rather than just direction
+      activateConnectionsByScrollPosition(scrollPercentRef.current);
+      
+      // If scrolling, show obvious animation by pulsing nodes
+      triggerNodePulses();
+      
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => (isScrollingDownRef.current = false), 200);
     };
 
-    const activateConnectionsByScroll = (percent: number) => {
+    const activateConnectionsByScrollPosition = (percent: number) => {
       const unique = nodesRef.current.flatMap((n) => n.connections.map((c) => ({ s: n, c })));
-      const connectionsToActivate = Math.floor(unique.length * percent) + 5;
+      
+      // Determine how many connections to activate based on scroll percentage
+      const connectionsToActivate = Math.floor(unique.length * percent);
+      
+      // Update connection state based on exact scroll position
       unique.forEach((item, idx) => {
-        if (idx < connectionsToActivate) {
-          item.c.active = isScrollingDownRef.current;
-          item.c.direction = idx % 2 === 0 ? 1 : -1;
-        } else item.c.active = false;
+        // Use scroll position to determine if connection should be active
+        const shouldBeActive = idx < connectionsToActivate;
+        
+        item.c.active = shouldBeActive;
+        
+        // Reverse direction when scrolling up
+        if (shouldBeActive) {
+          item.c.direction = isScrollingDownRef.current ? 1 : -1;
+        }
       });
+    };
+    
+    const triggerNodePulses = () => {
+      // Make scroll animation more obvious by triggering pulses on random nodes
+      if (isScrollingDownRef.current || !isScrollingDownRef.current) { // Animation for both directions
+        const visibleNodes = nodesRef.current.filter(node => 
+          node.y > window.scrollY && node.y < window.scrollY + window.innerHeight);
+            
+        // Pulse more nodes when scrolling for dramatic effect
+        const nodesToPulse = Math.floor(visibleNodes.length * 0.2); // Pulse 20% of visible nodes
+        
+        for (let i = 0; i < nodesToPulse; i++) {
+          const randomIndex = Math.floor(Math.random() * visibleNodes.length);
+          if (visibleNodes[randomIndex]) {
+            visibleNodes[randomIndex].pulseActive = true;
+            visibleNodes[randomIndex].pulseRadius = 0;
+          }
+        }
+      }
     };
 
     // ───────────────── drawing helpers
@@ -223,19 +348,20 @@ export const ScrollCircuit: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       nodesRef.current.forEach((n) => {
         n.connections.forEach((c) => {
+          // Draw basic connection line
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(c.node.x, c.node.y);
-          ctx.strokeStyle = "rgba(90,90,90,0.15)";
+          ctx.strokeStyle = "rgba(168, 85, 247, 0.25)"; // More visible lines with purple tint
           ctx.lineWidth = 1;
           ctx.stroke();
 
-          if (c.active && isScrollingDownRef.current) {
-            // Draw moving current
+          if (c.active) {
+            // Draw moving current with increased visibility
             const dx = c.node.x - n.x;
             const dy = c.node.y - n.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            const speed = 2;
+            const speed = 3; // Increased speed for more obvious animation
             c.currentPosition = (c.currentPosition + speed * c.direction) % dist;
             if (c.currentPosition < 0) c.currentPosition = dist;
 
@@ -243,15 +369,16 @@ export const ScrollCircuit: React.FC = () => {
             const x = n.x + dx * ratio;
             const y = n.y + dy * ratio;
 
+            // Larger current dot
             ctx.beginPath();
-            ctx.arc(x, y, 2, 0, Math.PI * 2);
-            ctx.fillStyle = "#a855f7"; // Neon purple for the moving current
+            ctx.arc(x, y, 3, 0, Math.PI * 2);
+            ctx.fillStyle = "#a855f7"; // Neon purple
             ctx.fill();
 
-            // Glow effect
+            // Stronger glow effect
             ctx.beginPath();
-            ctx.arc(x, y, 4, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(168, 85, 247, 0.3)"; // Neon purple glow
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(168, 85, 247, 0.5)"; // Brighter purple glow
             ctx.fill();
           }
         });
@@ -263,6 +390,7 @@ export const ScrollCircuit: React.FC = () => {
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.pulseRadius, 0, Math.PI * 2);
           ctx.strokeStyle = `rgba(168, 85, 247, ${1 - n.pulseRadius / n.maxPulseRadius})`; // Purple pulse
+          ctx.lineWidth = 2; // Thicker line for visibility
           ctx.stroke();
           n.pulseRadius += n.pulseSpeed;
           if (n.pulseRadius > n.maxPulseRadius) {
