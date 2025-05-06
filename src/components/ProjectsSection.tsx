@@ -34,7 +34,7 @@ export const ProjectsSection: React.FC = () => {
       <h2 className="text-3xl font-bold mb-3">Projects</h2>
       <div className="h-1 w-24 bg-gradient-to-r from-purple-400 to-fuchsia-500 mb-8"></div>
       <p className="text-gray-300 mb-12 max-w-3xl text-center mx-auto w-fit">
-        Here are some of my notable electrical engineering projects. Each demonstrates different skills and technologies I've worked with.
+        Here are some of my notable electrical engineering projects. Each demonstrates different skills and technologies I've worked with, along with the project's purpose and outcome.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -4,22 +4,28 @@ import React from 'react';
 export const ExperienceSection: React.FC = () => {
   const experiences = [
     {
-      title: "Electrical Engineering Intern",
-      company: "Tech Solutions Inc.",
-      period: "June 2023 - August 2023",
-      description: "Assisted in the design and testing of circuit boards for IoT devices. Conducted performance analysis and documentation of test results. Collaborated with cross-functional teams on product development."
+      title: "Incoming Avionics Hardware Design Intern",
+      company: "SpaceX",
+      period: "September 2025 - December 2025",
+      description: "TBA"
     },
     {
-      title: "Research Assistant",
-      company: "University Research Lab",
-      period: "January 2023 - May 2023",
-      description: "Worked on power electronics research project focused on improving efficiency of DC-DC converters. Designed and simulated circuit models using industry software. Contributed to research paper on converter optimization."
+      title: "Incoming Cell Electronics Design Intern",
+      company: "Tesla",
+      period: "May 2025 - August 2025",
+      description: "TBA"
     },
     {
-      title: "Technical Club Lead",
-      company: "University Electronics Club",
-      period: "September 2022 - Present",
-      description: "Lead a team of 15 students in electronics projects and competitions. Organized workshops on PCB design, Arduino programming, and circuit analysis. Mentored junior students on project development and troubleshooting."
+      title: "Avionics Hardware-In-the-Loop Lead",
+      company: "Yellowjacket Space Program",
+      period: "April 2025 - Present",
+      description: "Leading the design of a comprehensive HITL program for the avionics system at YJSP. Ultimate goal is full vehicle simulation with hardware components, allowing both hardware and software validation."
+    },
+    {
+      title: "Battery Management System Responsible Engineer",
+      company: "Yellowjacket Space Program",
+      period: "January 2025 - Present",
+      description: "Layout and schematic design of a 4-layer PCB intended for power management, including Buck/Boost Converters, Load Switches, LDOs, MOSFETs, Op-Amps, and Microcontrollers. Revised 6-layer PCB utilizing similar strucutre."
     }
   ];
 
@@ -27,8 +33,8 @@ export const ExperienceSection: React.FC = () => {
     <div>
       <h2 className="text-3xl font-bold mb-3">Experience</h2>
       <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 mb-8"></div>
-      <p className="text-gray-300 mb-12 max-w-3xl">
-        My professional experience includes internships, research positions, and leadership roles that have helped me develop technical and soft skills.
+      <p className="text-gray-300 mb-12 max-w-3xl text-center mx-auto w-fit">
+        My recent professional experience includes internships and leadership roles at technical clubs, all of which have helped me develop my technical and soft skills.
       </p>
 
       <div className="space-y-12">
