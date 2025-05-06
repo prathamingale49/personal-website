@@ -9,7 +9,7 @@ export const ProfileSection: React.FC = () => {
         <div className="lg:w-1/2">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-400">
-              Hello, I'm [Your Name]
+              Hello, I'm Pratham Ingale
             </span>
           </h1>
           <h2 className="text-xl md:text-2xl font-medium text-purple-400 mb-6">
@@ -19,7 +19,7 @@ export const ProfileSection: React.FC = () => {
             I'm passionate about electrical engineering, circuit design, and embedded systems. 
             This portfolio showcases my projects, internship experiences, and technical skills.
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 justify-center">
             <a 
               href="#projects" 
               className="bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2"

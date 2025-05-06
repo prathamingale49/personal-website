@@ -75,7 +75,7 @@ export const ContactSection: React.FC = () => {
                 <CircleDashed className="text-cyan-400 mt-1" />
                 <div>
                   <h4 className="font-medium text-white">Email</h4>
-                  <p className="text-gray-300">yourname@example.com</p>
+                  <p className="text-gray-300">pratham.ing49@gmail.com</p>
                 </div>
               </div>
               
@@ -83,7 +83,7 @@ export const ContactSection: React.FC = () => {
                 <CircleDashed className="text-cyan-400 mt-1" />
                 <div>
                   <h4 className="font-medium text-white">Location</h4>
-                  <p className="text-gray-300">City, State, Country</p>
+                  <p className="text-gray-300">Atlanta, GA, USA</p>
                 </div>
               </div>
               
@@ -91,7 +91,7 @@ export const ContactSection: React.FC = () => {
                 <CircleDashed className="text-cyan-400 mt-1" />
                 <div>
                   <h4 className="font-medium text-white">LinkedIn</h4>
-                  <p className="text-gray-300">linkedin.com/in/yourname</p>
+                  <p className="text-gray-300">linkedin.com/in/pratham-ingale/</p>
                 </div>
               </div>
               
@@ -99,7 +99,7 @@ export const ContactSection: React.FC = () => {
                 <CircleDashed className="text-cyan-400 mt-1" />
                 <div>
                   <h4 className="font-medium text-white">GitHub</h4>
-                  <p className="text-gray-300">github.com/yourusername</p>
+                  <p className="text-gray-300">github.com/prathamingale49</p>
                 </div>
               </div>
             </div>
