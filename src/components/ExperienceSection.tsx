@@ -49,7 +49,7 @@ export const ExperienceSection: React.FC = () => {
               {/* Circle marker */}
               <div className="mt-1.5 w-4 h-4 rounded-full bg-cyan-400 flex-shrink-0 relative z-10 ring-4 ring-gray-800"></div>
               
-              <div>
+              <div className = "justify-center">
                 <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                 <div className="text-cyan-300 font-medium mb-1">{exp.company}</div>
                 <div className="text-sm text-gray-400 mb-3">{exp.period}</div>
