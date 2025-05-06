@@ -41,7 +41,7 @@ export const ExperienceSection: React.FC = () => {
         {experiences.map((exp, index) => (
           <div key={index} className="relative">
             {/* Timeline connector */}
-            {index < experiences.length - 1 && (
+            {index < experiences.length && (
               <div className="absolute left-8 top-14 w-1 h-[calc(100%-3.5rem)] bg-gradient-to-b from-cyan-400 to-blue-500"></div>
             )}
             
@@ -49,7 +49,7 @@ export const ExperienceSection: React.FC = () => {
               {/* Circle marker */}
               <div className="mt-1.5 w-4 h-4 rounded-full bg-cyan-400 flex-shrink-0 relative z-10 ring-4 ring-gray-800"></div>
               
-              <div className = "justify-center">
+              <div className = "absolute-center">
                 <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                 <div className="text-cyan-300 font-medium mb-1">{exp.company}</div>
                 <div className="text-sm text-gray-400 mb-3">{exp.period}</div>
