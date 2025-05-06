@@ -34,7 +34,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="relative z-10">
         <header className="py-6 px-4 md:px-8 lg:px-16 fixed w-full top-0 bg-black/80 backdrop-blur-md z-20">
           <nav className="flex justify-between items-center max-w-7xl mx-auto">
-            <Link to="/" className="text-purple-300 font-bold text-2xl">EE.Portfolio</Link>
+            <Link to="/" className="text-purple-300 font-bold text-2xl">Personal Portfolio</Link>
             <ul className="hidden md:flex gap-8">
               <li>
                 <Link 
