@@ -45,11 +45,11 @@ export const ExperienceSection: React.FC = () => {
               <div className="absolute left-8 top-14 w-1 h-[calc(100%-3.5rem)] bg-gradient-to-b from-cyan-400 to-blue-500"></div>
             )}
             
-            <div className="flex gap-8">
+            <div className="flex gap-12">
               {/* Circle marker */}
               <div className="mt-1.5 w-4 h-4 rounded-full bg-cyan-400 flex-shrink-0 relative z-10 ring-4 ring-gray-800"></div>
               
-              <div className = "absolute-center">
+              <div className = "text-center items-center flex flex-col">
                 <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                 <div className="text-cyan-300 font-medium mb-1">{exp.company}</div>
                 <div className="text-sm text-gray-400 mb-3">{exp.period}</div>
