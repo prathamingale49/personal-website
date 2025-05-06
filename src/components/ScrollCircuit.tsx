@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
 
-// Keep original working logic but replace circles with EE component symbols.
+import React, { useEffect, useRef } from "react";
 
 interface CircuitNode {
   x: number;
@@ -151,7 +150,7 @@ export const ScrollCircuit: React.FC = () => {
     const drawSymbol = (ctx: CanvasRenderingContext2D, n: CircuitNode) => {
       ctx.save();
       ctx.translate(n.x, n.y);
-      ctx.strokeStyle = "#777";
+      ctx.strokeStyle = "#a855f7"; // Neon purple stroke
       ctx.lineWidth = 1.5;
 
       switch (n.type) {
@@ -211,7 +210,7 @@ export const ScrollCircuit: React.FC = () => {
           ctx.closePath();
           ctx.stroke();
           ctx.font = "8px sans-serif";
-          ctx.fillStyle = "#bbb";
+          ctx.fillStyle = "#a855f7"; // Neon purple text
           ctx.fillText("+", -14, -2);
           ctx.fillText("-", -14, 8);
           break;
@@ -231,4 +230,64 @@ export const ScrollCircuit: React.FC = () => {
           ctx.lineWidth = 1;
           ctx.stroke();
 
-          if (c.active && isScrollingDownRef
+          if (c.active && isScrollingDownRef.current) {
+            // Draw moving current
+            const dx = c.node.x - n.x;
+            const dy = c.node.y - n.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const speed = 2;
+            c.currentPosition = (c.currentPosition + speed * c.direction) % dist;
+            if (c.currentPosition < 0) c.currentPosition = dist;
+
+            const ratio = c.currentPosition / dist;
+            const x = n.x + dx * ratio;
+            const y = n.y + dy * ratio;
+
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = "#a855f7"; // Neon purple for the moving current
+            ctx.fill();
+
+            // Glow effect
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(168, 85, 247, 0.3)"; // Neon purple glow
+            ctx.fill();
+          }
+        });
+
+        // Draw node with component symbol
+        drawSymbol(ctx, n);
+
+        if (n.pulseActive) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.pulseRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(168, 85, 247, ${1 - n.pulseRadius / n.maxPulseRadius})`; // Purple pulse
+          ctx.stroke();
+          n.pulseRadius += n.pulseSpeed;
+          if (n.pulseRadius > n.maxPulseRadius) {
+            n.pulseActive = false;
+            n.pulseRadius = 0;
+          }
+        }
+      });
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    // Initialize animation
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("scroll", handleScroll);
+    resizeCanvas();
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(animationRef.current);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="w-full h-full" />;
+};

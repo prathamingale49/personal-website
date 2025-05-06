@@ -40,13 +40,31 @@ canvas {
 
 /* Node pulse animation */
 @keyframes node-pulse {
-  0% { box-shadow: 0 0 5px 0px rgba(150, 150, 150, 0.7); }
-  50% { box-shadow: 0 0 15px 5px rgba(150, 150, 150, 0.9); }
-  100% { box-shadow: 0 0 5px 0px rgba(150, 150, 150, 0.7); }
+  0% { box-shadow: 0 0 5px 0px rgba(168, 85, 247, 0.7); }
+  50% { box-shadow: 0 0 15px 5px rgba(168, 85, 247, 0.9); }
+  100% { box-shadow: 0 0 5px 0px rgba(168, 85, 247, 0.7); }
 }
 
 .node {
   animation: node-pulse 2s infinite;
+}
+
+/* Neon purple highlights */
+.text-neon-purple {
+  color: #a855f7;
+}
+
+.bg-neon-purple {
+  background-color: #a855f7;
+}
+
+.hover-neon-purple:hover {
+  color: #a855f7;
+  transition: color 0.3s ease;
+}
+
+.border-neon-purple {
+  border-color: #a855f7;
 }
 
 /* Keep other existing styles */
