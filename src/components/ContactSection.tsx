@@ -68,12 +68,12 @@ export const ContactSection: React.FC = () => {
         
         <div className="md:w-1/2">
           <div className="bg-gray-800/60 p-6 rounded-lg border border-gray-700 h-full">
-            <h3 className="text-xl font-semibold text-cyan-300 mb-4">Contact Information</h3>
+            <h3 className="text-xl font-semibold text-cyan-300 mb-4 text-left">Contact Information</h3>
             
             <div className="space-y-4">
               <div className="flex items-start gap-4">
                 <CircleDashed className="text-cyan-400 mt-1" />
-                <div>
+                <div className="text-left">
                   <h4 className="font-medium text-white">Email</h4>
                   <p className="text-gray-300">pratham.ing49@gmail.com</p>
                 </div>
@@ -81,7 +81,7 @@ export const ContactSection: React.FC = () => {
               
               <div className="flex items-start gap-4">
                 <CircleDashed className="text-cyan-400 mt-1" />
-                <div>
+                <div className="text-left">
                   <h4 className="font-medium text-white">Location</h4>
                   <p className="text-gray-300">Atlanta, GA, USA</p>
                 </div>
@@ -89,7 +89,7 @@ export const ContactSection: React.FC = () => {
               
               <div className="flex items-start gap-4">
                 <CircleDashed className="text-cyan-400 mt-1" />
-                <div>
+                <div className="text-left">
                   <h4 className="font-medium text-white">LinkedIn</h4>
                   <p className="text-gray-300">linkedin.com/in/pratham-ingale/</p>
                 </div>
@@ -97,7 +97,7 @@ export const ContactSection: React.FC = () => {
               
               <div className="flex items-start gap-4">
                 <CircleDashed className="text-cyan-400 mt-1" />
-                <div>
+                <div className="text-left">
                   <h4 className="font-medium text-white">GitHub</h4>
                   <p className="text-gray-300">github.com/prathamingale49</p>
                 </div>

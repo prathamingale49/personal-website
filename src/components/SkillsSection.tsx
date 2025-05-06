@@ -7,9 +7,9 @@ export const SkillsSection: React.FC = () => {
       category: "Technical Skills",
       skills: [
         { name: "Circuit Design", level: 90 },
-        { name: "PCB Layout", level: 85 },
+        { name: "PCB Layout Design", level: 85 },
         { name: "Microcontroller Programming", level: 80 },
-        { name: "Signal Processing", level: 75 },
+        { name: "PCBA Debugging & Analysis", level: 75 },
         { name: "Power Electronics", level: 70 },
       ]
     },
@@ -17,8 +17,8 @@ export const SkillsSection: React.FC = () => {
       category: "Software & Tools",
       skills: [
         { name: "Altium Designer", level: 85 },
-        { name: "MATLAB", level: 85 },
-        { name: "GitHub & VSCode", level: 90 },
+        { name: "Git", level: 85 },
+        { name: "MATLAB", level: 80 },
         { name: "LTSpice", level: 75 },
         { name: "Quartus", level: 65 },
       ]
