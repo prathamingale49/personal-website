@@ -14,13 +14,26 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="flex gap-6">
-            <a href="https://linkedin.com/in/pratham-ingale/" className="text-gray-500 hover:text-gray-300 transition-colors">
+            <a
+              href="https://linkedin.com/in/pratham-ingale/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-gray-300 transition-colors"
+            >
               LinkedIn
             </a>
-            <a href="https://github.com/prathamingale49" className="text-gray-500 hover:text-gray-300 transition-colors">
+            <a
+              href="https://github.com/prathamingale49"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-gray-300 transition-colors"
+            >
               GitHub
             </a>
-            <a href="mailto:pratham.ing49@gmail.com" className="text-gray-500 hover:text-gray-300 transition-colors">
+            <a
+              href="mailto:pratham.ing49@gmail.com"
+              className="text-gray-500 hover:text-gray-300 transition-colors"
+            >
               Email
             </a>
           </div>
