@@ -9,18 +9,18 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="mb-4 md:mb-0">
-            <p className="text-gray-300 font-bold text-lg">EE.Portfolio</p>
+            <p className="text-gray-300 font-bold text-lg">Pratham Ingale</p>
             <p className="text-gray-500 text-sm">Electrical Engineering Student</p>
           </div>
           
           <div className="flex gap-6">
-            <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">
+            <a href="https://linkedin.com/in/pratham-ingale/" className="text-gray-500 hover:text-gray-300 transition-colors">
               LinkedIn
             </a>
-            <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">
+            <a href="https://github.com/prathamingale49" className="text-gray-500 hover:text-gray-300 transition-colors">
               GitHub
             </a>
-            <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">
+            <a href="mailto:pratham.ing49@gmail.com" className="text-gray-500 hover:text-gray-300 transition-colors">
               Email
             </a>
           </div>

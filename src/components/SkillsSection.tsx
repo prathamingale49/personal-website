@@ -16,11 +16,11 @@ export const SkillsSection: React.FC = () => {
     {
       category: "Software & Tools",
       skills: [
+        { name: "Altium Designer", level: 85 },
         { name: "MATLAB", level: 85 },
-        { name: "Altium Designer", level: 80 },
-        { name: "Arduino", level: 90 },
-        { name: "SPICE Simulation", level: 75 },
-        { name: "LabVIEW", level: 65 },
+        { name: "GitHub & VSCode", level: 90 },
+        { name: "LTSpice", level: 75 },
+        { name: "Quartus", level: 65 },
       ]
     },
     {
@@ -29,8 +29,8 @@ export const SkillsSection: React.FC = () => {
         { name: "C/C++", level: 80 },
         { name: "Python", level: 75 },
         { name: "VHDL", level: 65 },
-        { name: "JavaScript", level: 60 },
-        { name: "Assembly", level: 50 },
+        { name: "Rust", level: 55 },
+        { name: "Assembly", level: 55 },
       ]
     }
   ];
@@ -39,7 +39,7 @@ export const SkillsSection: React.FC = () => {
     <div>
       <h2 className="text-3xl font-bold mb-3">Skills</h2>
       <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 mb-8"></div>
-      <p className="text-gray-300 mb-12 max-w-3xl">
+      <p className="text-gray-300 mb-12 max-w-3xl text-center mx-auto w-fit">
         I've developed a diverse set of skills through coursework, projects, and professional experiences.
       </p>
 
