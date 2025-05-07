@@ -111,11 +111,11 @@ const About = () => {
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Beyond Engineering</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Science fiction literature</li>
-                  <li>Hiking with my dog</li>
-                  <li>Playing acoustic & electric guitar</li>
-                  <li>Watching fantasy & sci-fi movies</li>
-                  <li>Going to live football games</li>
+                  <li>Reading fantasy & science fiction literature</li>
+                  <li>Hiking and going on adventures with my dog</li>
+                  <li>Playing fingerstyle acoustic & electric guitar</li>
+                  <li>Watching marathons of Star Wars & Marvel movies</li>
+                  <li>Going to live football games at Bobby Dodd Stadium</li>
                 </ul>
               </div>
             </div>
