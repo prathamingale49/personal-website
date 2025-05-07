@@ -79,13 +79,13 @@ const About = () => {
             </div>
             <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-8">
               <p className="text-gray-300 mb-4">
-                My journey into electrical engineering began when I was 12 years old and took apart my first radio. Though my parents weren't thrilled about the disassembled appliance, that moment sparked a lifelong curiosity about electronics and how they work.
+                My interest in electronics began early, but it truly ignited when I built my first circuit board in high school. I designed a weighing scale using a force detector and an Arduino, and it was the most fun I've had in years.
               </p>
               <p className="text-gray-300 mb-4">
-                Throughout high school, I participated in robotics clubs and science fairs, always gravitating toward projects involving circuits and programming. One of my proudest achievements was building a solar-powered charging station for my school's outdoor area, which fueled my interest in renewable energy applications.
+                I didn't stop there, next I took on a smart-belt for the visually impaired, a robot vehicle, and LED chaser. These projects were fun, but what I realized was that I wanted to learn electronics from the beginning—filling in all the gaps in my knowledge.
               </p>
               <p className="text-gray-300">
-                In university, I've found my passion at the intersection of power electronics and sustainability. I'm particularly interested in how electrical engineering can contribute to addressing climate change through more efficient energy systems and renewable technology integration. My current focus is on developing the technical and problem-solving skills that will allow me to make meaningful contributions in this field.
+                In university, I've found my passion to be in avionics & power electronics, specifically in circuit & PCB design. I love the challenge of turning an idea into a tangible board, and my work with YJSP has cemented my appreciation for the field.
               </p>
             </div>
           </section>
