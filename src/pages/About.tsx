@@ -29,10 +29,10 @@ const About = () => {
                 I'm an electrical engineering student at Georgia Tech with a passion for building real, test-ready hardware—especially in avionics, power electronics, and embedded systems. I thrive on turning schematics into tangilbe boards, debugging systems under pressure, and designing hardware that works.
               </p>
               <p className="text-gray-300 mb-6">
-                Currently, I'm designing high-relaibility electronics through hands-on internships and leadership roles in student rocketry. From rocket BMS PCBs to DC-DC converters and HITL validation platforms, I'm focused on creating robust, efficient systems that can survive demanding environments.
+                Currently, I'm designing high reliability electronics through hands-on internships and leadership roles in student rocketry. From rocket BMS PCBs to DC-DC converters and HITL validation platforms, I'm focused on creating robust, efficient systems that can survive demanding environments.
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <a 
                   href="https://linkedin.com/in/pratham-ingale/" 
                   target="_blank" 
