@@ -112,10 +112,10 @@ const About = () => {
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Beyond Engineering</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
                   <li>Reading fantasy & science fiction literature</li>
+                  <li>Going to live football games at Bobby Dodd Stadium</li>
                   <li>Hiking and going on adventures with my dog</li>
                   <li>Playing fingerstyle acoustic & electric guitar</li>
                   <li>Watching marathons of Star Wars & Marvel movies</li>
-                  <li>Going to live football games at Bobby Dodd Stadium</li>
                 </ul>
               </div>
             </div>
