@@ -26,10 +26,10 @@ const About = () => {
             <div className="flex flex-col justify-center">
               <h2 className="text-2xl font-bold text-white mb-4">Hello, I'm Pratham Ingale</h2>
               <p className="text-gray-300 mb-4">
-                I'm an electrical engineering student passionate about circuit design, analog & power electronics, and embedded systems. My journey in electrical engineering began with a childhood fascination with taking apart electronic devices to understand how they work.
+                I'm an electrical engineering student at Georgia Tech with a passion for building real, test-ready hardware—especially in avionics, power electronics, and embedded systems. I thrive on turning schematics into tangilbe boards, debugging systems under pressure, and designing hardware that works.
               </p>
               <p className="text-gray-300 mb-6">
-                Currently pursuing my Bachelor's degree in Electrical Engineering, I focus on developing practical skills through hands-on projects and internships. My goal is to contribute to technological innovations that address real-world challenges, particularly in the power & avionics industries.
+                Currently, I'm designing high-relaibility electronics through hands-on internships and leadership roles in student rocketry. From rocket BMS PCBs to DC-DC converters and HITL validation platforms, I'm focused on creating robust, efficient systems that can survive demanding environments.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -143,9 +143,9 @@ const About = () => {
                   <div className="w-16 h-16 mx-auto bg-purple-900/50 rounded-full flex items-center justify-center mb-4">
                     <GraduationCap size={28} className="text-purple-400" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Problem-Solving</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Systems Thinking</h3>
                   <p className="text-gray-300">
-                    Electrical engineering offers complex, challenging problems that require creative thinking and analytical skills to solve.
+                    The scale of electrical engineering projects means that every component must fit together perfectly—considering how everything works together.
                   </p>
                 </div>
                 
@@ -155,7 +155,7 @@ const About = () => {
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2">Impact</h3>
                   <p className="text-gray-300">
-                    Through electrical engineering, I can contribute to solutions for global challenges like sustainable energy and technological accessibility.
+                    Electrical engineering gives me the tools to solve meaningful problems and power the projects that matter the most.
                   </p>
                 </div>
               </div>
