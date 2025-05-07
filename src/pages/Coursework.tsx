@@ -8,121 +8,121 @@ const Coursework = () => {
     {
       code: "ECE 2026",
       title: "Introduction to Signal Processing",
-      description: "Signal representation, system response, convolution, Fourier series, and transform methods.",
+      description: "Discrete-time signals, linear systems, convolution, sampling, and Fourier methods.",
       semester: "Spring 2025",
       grade: "A",
       highlights: [
-        "Built a basic audio amplifier circuit",
-        "Learned circuit analysis techniques",
-        "Introduced to electrical engineering principles"
+        "Designed filters using MATLAB and audio data",
+        "Applied DFT and Z-transform to real signals",
+        "Analyzed aliasing and system response plots"
       ]
     },
     {
       code: "ECE 2031",
       title: "Digital Design Laboratory",
-      description: "Boolean algebra, combinational and sequential logic circuits, and digital system design principles.",
+      description: "Boolean logic, VHDL, FPGA systems, sequential logic, and team-based digital design.",
       semester: "Spring 2025",
       grade: "A",
       highlights: [
-        "Designed and implemented a 4-bit ALU",
-        "Created state machines using VHDL",
-        "Built digital clock project with FPGA"
+        "Programmed FPGAs to implement logic units",
+        "Designed a state machine and 4-bit ALU",
+        "Built a full LED Peripheral system with VHDL"
       ]
     },
     {
       code: "ECE 2035",
       title: "Programming for HW/SW Systems",
-      description: "Advanced circuit analysis, transient and steady-state circuit behavior, and network theorems.",
+      description: "Low-level C, RISC-V assembly, memory management, data structures, and debugging.",
       semester: "Spring 2025",
       grade: "A",
       highlights: [
-        "Analyzed complex RLC circuits",
-        "Worked with operational amplifiers",
-        "Learned frequency domain analysis techniques"
+        "Wrote C and assembly for hardware control",
+        "Built data structures using pointer logic",
+        "Programmed a Snake game in C on an LCD + Mbed"
       ]
     },
     {
       code: "ECE 2040",
       title: "Circuit Analysis",
-      description: "Semiconductor devices, diode and transistor circuits, and small-signal amplifier design.",
+      description: "DC/AC circuits, RLC transients, phasors, Thevenin/Norton, and op-amp modeling.",
       semester: "Spring 2025",
       grade: "A",
       highlights: [
-        "Designed various transistor amplifier configurations",
-        "Conducted lab experiments with diodes and transistors",
-        "Simulated circuits using SPICE software"
+        "Analyzed RLC circuits in time and frequency domains",
+        "Built SPICE models for AC and DC circuits",
+        "Applied Thevenin and Norton theorems in circuit design"
       ]
     },
     {
       code: "MATH 2552",
       title: "Differential Equations",
-      description: "Signal representation, system response, convolution, Fourier series, and transform methods.",
+      description: "First and second-order ODEs, Laplace methods, systems, and basic modeling.",
       semester: "Spring 2025",
       grade: "A",
       highlights: [
-        "Performed signal analysis using MATLAB",
-        "Studied continuous and discrete-time systems",
-        "Applied filter design techniques"
+        "Solved ODEs with Laplace transforms",
+        "Modeled circuits and systems with ODEs",
+        "Used eigenvalues in linear system solvers"
       ]
     },
     {
       code: "ECE 2020",
       title: "Digital System Design",
-      description: "Advanced electronic circuit design, feedback, amplifiers, oscillators, and power electronics.",
+      description: "Combinational/sequential logic, datapath, CPU design, binary math, assembly.",
       semester: "Fall 2024",
       grade: "A",
       highlights: [
-        "Designed a Class AB audio amplifier",
-        "Worked with operational amplifier circuits",
-        "Built and tested a switching power supply"
+        "Built ALU, memory, and control circuits",
+        "Designed a state machine for a vending machine",
+        "Wrote simple programs in MIPS assembly"
       ]
     },
     {
       code: "CS 1331",
       title: "Object-Oriented Programming",
-      description: "Microcontroller architecture, programming, interfacing, and embedded system design.",
+      description: "Java classes, inheritance, polymorphism, object design, and debugging skills.",
       semester: "Fall 2024",
       grade: "A",
       highlights: [
-        "Programmed ARM Cortex-M microcontrollers",
-        "Developed embedded applications with sensors",
-        "Created an IoT monitoring system"
+        "Wrote Java apps with GUI and objects",
+        "Used class hierarchies and interfaces",
+        "Debugged code using IDE tools and tests"
       ]
     },
     {
       code: "PHYS 2212",
       title: "Introductory Physics II",
-      description: "System modeling, stability analysis, controller design, and feedback systems.",
+      description: "Electric fields, circuits, magnetism, optics, and intro to modern physics.",
       semester: "Fall 2024",
       grade: "A",
       highlights: [
-        "Modeled dynamic systems using differential equations",
-        "Designed PID controllers",
-        "Implemented control systems in Simulink"
+        "Applied Gauss's law to charge setups",
+        "Built and analyzed DC and AC circuits",
+        "Analyzed Lenz's and Faraday's Laws in experiments"
       ]
     },
     {
       code: "MATH 1554",
       title: "Linear Algebra",
-      description: "System modeling, stability analysis, controller design, and feedback systems.",
+      description: "Matrices, Gaussian elimination, eigenvalues, vector spaces, and projections.",
       semester: "Fall 2024",
       grade: "A",
       highlights: [
-        "Modeled dynamic systems using differential equations",
-        "Designed PID controllers",
-        "Implemented control systems in Simulink"
+        "Solved systems of linear equations using row reduction",
+        "Diagonalized matrices with eigendecomp",
+        "Applied dot products to least squares"
       ]
     },
     {
-      code: "VIP 3601",
-      title: "Independent Research Project",
-      description: "System modeling, stability analysis, controller design, and feedback systems.",
+      code: "MATH 2551",
+      title: "Multivariable Calculus",
+      description: "Partial derivatives, multiple integrals, vector fields, and optimization.",
       semester: "Fall 2024",
       grade: "A",
       highlights: [
-        "Modeled dynamic systems using differential equations",
-        "Designed PID controllers",
-        "Implemented control systems in Simulink"
+        "Applied Lagrange for constrained optimalization",
+        "Used Green's and Stokes' theorems in vector fields",
+        "Evaluated triple integrals in 3D shapes",
       ]
     }
   ];
