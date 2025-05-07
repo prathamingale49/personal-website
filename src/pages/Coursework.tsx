@@ -132,7 +132,7 @@ const Coursework = () => {
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-purple-300 mb-8 text-center">Coursework</h1>
         <p className="text-gray-300 max-w-3xl mx-auto text-center mb-12">
-          A comprehensive overview of my electrical engineering academic journey, highlighting key courses, projects, and learning outcomes that have shaped my expertise in the field.
+          A comprehensive overview of my electrical engineering academic journey, highlighting courses, projects, and learning outcomes that have shaped my understanding of the field.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
