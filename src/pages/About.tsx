@@ -100,22 +100,22 @@ const About = () => {
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Technical Hobbies</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Building amateur radio equipment</li>
-                  <li>Restoring vintage electronics</li>
-                  <li>DIY home automation projects</li>
-                  <li>Participating in electronics hackathons</li>
-                  <li>Contributing to open-source hardware projects</li>
+                  <li>Prototyping potential projects with breadboards & microcontrollers</li>
+                  <li>Optimizing switching regulators' components & layout</li>
+                  <li>Using arduinos for home-automation projects</li>
+                  <li>Competing in & supporting hardware hackathons</li>
+                  <li>Learning and tinkering with signal amplifiers</li>
                 </ul>
               </div>
               
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Beyond Engineering</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Landscape photography</li>
-                  <li>Hiking and outdoor adventures</li>
                   <li>Science fiction literature</li>
-                  <li>Playing bass guitar</li>
-                  <li>Chess and strategy games</li>
+                  <li>Hiking with my dog</li>
+                  <li>Playing acoustic & electric guitar</li>
+                  <li>Watching fantasy & sci-fi movies</li>
+                  <li>Going to live football games</li>
                 </ul>
               </div>
             </div>
