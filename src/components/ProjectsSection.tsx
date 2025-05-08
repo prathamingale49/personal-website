@@ -8,7 +8,7 @@ export const ProjectsSection: React.FC = () => {
     {
       id: "bms-design",
       title: "Battery Management System",
-      description: "Designed and implemented a comprehensive BMS for the Yellowjacket Space Program's rocket, featuring cell balancing, temperature monitoring, and state-of-charge estimation.",
+      description: "Designed and implemented a comprehensive BMS for the Yellowjacket Space Program's rocket, featuring power sequencing, power conversion and distribution, and battery management.",
       tags: ["Schematic Design", "PCB Layout Design", "Embedded Systems", "Altium", "Power Electronics", "PCBA Debugging"],
       image: "dbms.jpg"
     },
