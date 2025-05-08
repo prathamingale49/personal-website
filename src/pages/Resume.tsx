@@ -116,6 +116,7 @@ const Resume = () => {
                     <h3 className="text-lg font-semibold mb-3 text-purple-300">Hardware</h3>
                     <ul className="list-disc list-inside text-gray-300 space-y-1">
                       <li>PCB Schematic/Layout (Altium Designer, KiCad)</li>
+                      <li>Circuit Simulation (LTSpice, PSpice)</li>
                       <li>Soldering & Rework (SMD, THT, QFN, BGA)</li>
                       <li>DC-DC Converters (Buck, Boost, LDO)</li>
                       <li>OScilloscopes, Logic Analyzers, Multimeters</li>
@@ -123,19 +124,13 @@ const Resume = () => {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-3 text-purple-300">Embedded Systems</h3>
+                    <h3 className="text-lg font-semibold mb-3 text-purple-300">Programming</h3>
                     <ul className="list-disc list-inside text-gray-300 space-y-1">
                       <li>Microcontrollers (STM32, ESP32, ATMega)</li>
                       <li>Rust, C, C++ Programming</li>
                       <li>Firmware for SPI, ADCs, GPIO, Ethernet</li>
                       <li>FPGA Basics (Quartus, VHDL)</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-purple-300">Software</h3>
-                    <ul className="list-disc list-inside text-gray-300 space-y-1">
                       <li>MATLAB, Simulink, Python</li>
-                      <li>LTSpice, PSpice, Arduino IDE</li>
                       <li>Git, VSCode, Keil, Jupyter</li>
                     </ul>
                   </div>
