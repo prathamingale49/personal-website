@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Layout } from '../components/Layout';
 import { Briefcase, Award, Users, Calendar } from 'lucide-react';
@@ -6,46 +5,65 @@ import { Briefcase, Award, Users, Calendar } from 'lucide-react';
 const Experience = () => {
   const workExperiences = [
     {
-      title: "Electrical Engineering Intern",
-      company: "Tech Solutions Inc.",
-      period: "June 2023 - August 2023",
-      location: "San Francisco, CA",
-      description: "Assisted in the design and testing of circuit boards for IoT devices. Conducted performance analysis and documentation of test results. Collaborated with cross-functional teams on product development.",
+      title: "Avionics Hardware Design Intern",
+      company: "SpaceX – Starlink Aviation",
+      period: "Fall 2025",
+      location: "Hawthorne, CA",
+      description: "Details to be added after internship completion",
       achievements: [
-        "Designed PCB layout for a wireless sensor node that reduced production cost by 15%",
-        "Developed test procedures for quality assurance that improved defect detection by 20%",
-        "Participated in 3 client-facing meetings to present technical specifications",
-        "Created documentation for internal knowledge base used by all engineering teams"
+        "Details to be added after internship completion"
       ],
-      technologies: ["PCB Design", "Altium Designer", "Test Equipment", "Arduino", "Technical Documentation"]
+      technologies: ["PCB Design", "Altium Designer", "Test Equipment", "Avionics", "Hardware Design"]
     },
     {
-      title: "Research Assistant",
-      company: "University Research Lab",
-      period: "January 2023 - May 2023",
-      location: "University Campus",
-      description: "Worked on power electronics research project focused on improving efficiency of DC-DC converters. Designed and simulated circuit models using industry software. Contributed to research paper on converter optimization.",
+      title: "Cell Electronics Design Intern",
+      company: "Tesla – Cell Manufacturing",
+      period: "Summer 2025",
+      location: "Austin, TX",
+      description: "Details to be added after internship completion",
       achievements: [
-        "Improved converter efficiency by 7% through innovative circuit topology",
-        "Developed MATLAB simulation models for performance prediction",
-        "Co-authored research paper submitted to IEEE Power Electronics journal",
-        "Presented findings at university research symposium"
+        "Details to be added after internship completion"
       ],
-      technologies: ["MATLAB", "Simulink", "Power Electronics", "LTspice", "Technical Writing"]
+      technologies: ["Power Electronics", "Cell Design", "Test Equipment", "Hardware Design"]
     },
     {
-      title: "Technical Club Lead",
-      company: "University Electronics Club",
-      period: "September 2022 - Present",
-      location: "University Campus",
-      description: "Lead a team of 15 students in electronics projects and competitions. Organized workshops on PCB design, Arduino programming, and circuit analysis. Mentored junior students on project development and troubleshooting.",
+      title: "Hardware-in-the-Loop Lead",
+      company: "Yellowjacket Space Program",
+      period: "April 2025 - Present",
+      location: "Georgia Tech",
+      description: "Leading the development of HITL test systems for validating avionics sensor boards and ensuring reliable rocket systems.",
       achievements: [
-        "Organized 12 technical workshops with average attendance of 30 students",
-        "Led team to 2nd place in regional robotics competition",
-        "Secured $5,000 in funding from university for lab equipment",
-        "Mentored 8 first-year students in completing their first electronics projects"
+        "Designed HITL test system to validate avionics sensor boards",
+        "Built modular PCBs to emulate RTDs, thermocouples, and pressure sensors",
+        "Led system architecture for DSUB-connected test interfaces and automation"
       ],
-      technologies: ["Project Management", "Arduino", "Circuit Design", "Mentoring", "Event Planning"]
+      technologies: ["HITL Testing", "PCB Design", "Sensor Emulation", "System Architecture", "Test Automation"]
+    },
+    {
+      title: "Battery Management System Engineer",
+      company: "Yellowjacket Space Program",
+      period: "January 2025 - Present",
+      location: "Georgia Tech",
+      description: "Designing and implementing battery management systems for rocket power systems, focusing on reliability and efficiency.",
+      achievements: [
+        "Designed a 4-layer BMS PCB with converters, op-amps, and load switches",
+        "Wrote Rust firmware for SPI comms, power control, and telemetry logging",
+        "Handled bring-up and validation using oscilloscopes and debug tools"
+      ],
+      technologies: ["BMS Design", "PCB Layout", "Rust", "Power Electronics", "Hardware Debugging"]
+    },
+    {
+      title: "Umbilical & Harnessing Engineer",
+      company: "Yellowjacket Space Program",
+      period: "January 2025 - Present",
+      location: "Georgia Tech",
+      description: "Responsible for designing and implementing interface systems for rocket ground-to-flight communications and sensor integration.",
+      achievements: [
+        "Designed interface PCBs for rocket ground-to-flight comms and abort logic",
+        "Implemented rocket harness with 8+ Ethernet lines and 20+ signal channels",
+        "Integrated PTs, RTDs, TCs, valves, and sensor routing across avionics stack"
+      ],
+      technologies: ["Interface Design", "Harnessing", "Sensor Integration", "PCB Design", "System Integration"]
     }
   ];
 
@@ -137,6 +155,19 @@ const Experience = () => {
             <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
               <div className="mb-6 pb-6 border-b border-gray-700">
                 <div className="flex justify-between mb-1">
+                  <h3 className="text-lg font-semibold">Science Olympiad Mentor</h3>
+                  <span className="text-purple-400 text-sm">2021 - 2024</span>
+                </div>
+                <p className="text-gray-400 mb-2">Local Middle School</p>
+                <p className="text-gray-300">
+                  Taught epidemiology to middle school students for Science Olympiad competitions. Led the team to 
+                  achieve 2nd place at state championships, becoming the first team from their high school to ever 
+                  place at the state level.
+                </p>
+              </div>
+
+              <div className="mb-6 pb-6 border-b border-gray-700">
+                <div className="flex justify-between mb-1">
                   <h3 className="text-lg font-semibold">STEM Outreach Volunteer</h3>
                   <span className="text-purple-400 text-sm">2022 - Present</span>
                 </div>
@@ -171,33 +202,42 @@ const Experience = () => {
             <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
               <div className="mb-6 pb-6 border-b border-gray-700">
                 <div className="flex justify-between mb-1">
-                  <h3 className="text-lg font-semibold">IEEE Student Competition</h3>
-                  <span className="text-purple-400 text-sm">2023</span>
+                  <h3 className="text-lg font-semibold">Faculty Honors & Dean's List</h3>
+                  <span className="text-purple-400 text-sm">2024 - Present</span>
                 </div>
-                <p className="text-gray-400 mb-2">2nd Place, IoT Device Category</p>
                 <p className="text-gray-300">
-                  Recognized for developing an innovative energy monitoring device that won second place 
-                  in the regional IEEE student competition.
+                  Maintained perfect 4.0 GPA for all semesters at Georgia Tech.
                 </p>
               </div>
               
               <div className="mb-6 pb-6 border-b border-gray-700">
                 <div className="flex justify-between mb-1">
-                  <h3 className="text-lg font-semibold">Dean's List</h3>
-                  <span className="text-purple-400 text-sm">2020 - Present</span>
+                  <h3 className="text-lg font-semibold">National Merit Scholarship</h3>
+                  <span className="text-purple-400 text-sm">2024</span>
                 </div>
                 <p className="text-gray-300">
-                  Maintained academic excellence with GPA above 3.7 for all semesters.
+                  Awarded for exceptional academic achievement and potential.
+                </p>
+              </div>
+              
+              <div className="mb-6 pb-6 border-b border-gray-700">
+                <div className="flex justify-between mb-1">
+                  <h3 className="text-lg font-semibold">Perfect 36 ACT Score</h3>
+                  <span className="text-purple-400 text-sm">2024</span>
+                </div>
+                <p className="text-gray-300">
+                  Achieved perfect score in all sections of the ACT.
                 </p>
               </div>
               
               <div>
                 <div className="flex justify-between mb-1">
-                  <h3 className="text-lg font-semibold">Academic Merit Scholarship</h3>
-                  <span className="text-purple-400 text-sm">2020 - 2024</span>
+                  <h3 className="text-lg font-semibold">10x Top 4 Medalist</h3>
+                  <span className="text-purple-400 text-sm">2019 - 2024</span>
                 </div>
+                <p className="text-gray-400 mb-2">NC Science Olympiad</p>
                 <p className="text-gray-300">
-                  Full tuition scholarship awarded for academic achievement and leadership potential.
+                  Consistently placed in top 4 positions across multiple events in state-level competitions.
                 </p>
               </div>
             </div>
