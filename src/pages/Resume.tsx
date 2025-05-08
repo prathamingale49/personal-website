@@ -26,23 +26,39 @@ const Resume = () => {
                 </p>
               </div>
               <div className="w-full md:w-1/3">
-                <div className="text-gray-300">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span>📧</span>
-                    <span>pratham.ing49@gmail.com</span>
-                  </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span>📱</span>
-                    <span>(704) 431-7206</span>
-                  </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span>🔗</span>
-                    <a href="https://linkedin.com/in/pratham-ingale/" className="text-purple-400 hover:underline">LinkedIn</a>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>🌐</span>
-                    <a href="https://github.com/prathamingale49" className="text-purple-400 hover:underline">GitHub</a>
-                  </div>
+              <div className="text-gray-300">
+                <div className="flex items-center gap-2 mb-2">
+                  <span>📧</span>
+                  <a href="mailto:pratham.ing49@gmail.com" className="text-purple-400 hover:underline">
+                    pratham.ing49@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span>📱</span>
+                  <span>(704) 431-7206</span>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span>🔗</span>
+                  <a
+                    href="https://linkedin.com/in/pratham-ingale/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:underline"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>🌐</span>
+                  <a
+                    href="https://github.com/prathamingale49"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:underline"
+                  >
+                    GitHub
+                  </a>
+                </div>
                 </div>
               </div>
             </div>
