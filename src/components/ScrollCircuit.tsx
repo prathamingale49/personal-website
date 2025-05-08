@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 
 interface CircuitNode {
@@ -248,156 +247,195 @@ export const ScrollCircuit: React.FC = () => {
         // Reverse direction when scrolling up
         if (shouldBeActive) {
           item.c.direction = isScrollingDownRef.current ? 1 : -1;
+          item.c.currentPosition = isScrollingDownRef.current ? 0 : 1;
         }
       });
     };
     
     const triggerNodePulses = () => {
-      // Make scroll animation more obvious by triggering pulses on random nodes
-      if (isScrollingDownRef.current || !isScrollingDownRef.current) { // Animation for both directions
-        const visibleNodes = nodesRef.current.filter(node => 
-          node.y > window.scrollY && node.y < window.scrollY + window.innerHeight);
-            
-        // Pulse more nodes when scrolling for dramatic effect
-        const nodesToPulse = Math.floor(visibleNodes.length * 0.2); // Pulse 20% of visible nodes
-        
-        for (let i = 0; i < nodesToPulse; i++) {
-          const randomIndex = Math.floor(Math.random() * visibleNodes.length);
-          if (visibleNodes[randomIndex]) {
-            visibleNodes[randomIndex].pulseActive = true;
-            visibleNodes[randomIndex].pulseRadius = 0;
+      // Find nodes that are currently visible in the viewport
+      const viewportTop = window.scrollY;
+      const viewportBottom = viewportTop + window.innerHeight;
+      
+      nodesRef.current.forEach(node => {
+        if (node.y >= viewportTop && node.y <= viewportBottom) {
+          // Add some randomness to pulse activation
+          if (Math.random() < 0.3) { // 30% chance to pulse
+            node.pulseActive = true;
+            node.pulseRadius = 0;
           }
         }
-      }
+      });
     };
 
     // ───────────────── drawing helpers
     const drawSymbol = (ctx: CanvasRenderingContext2D, n: CircuitNode) => {
       ctx.save();
       ctx.translate(n.x, n.y);
-      ctx.strokeStyle = "#a855f7"; // Neon purple stroke
-      ctx.lineWidth = 1.5;
+      
+      // Draw glow effect
+      const glowGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, n.radius * 2);
+      glowGradient.addColorStop(0, `rgba(168, 85, 247, ${0.3 + Math.sin(Date.now() * 0.001) * 0.1})`);
+      glowGradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
+      ctx.fillStyle = glowGradient;
+      ctx.beginPath();
+      ctx.arc(0, 0, n.radius * 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw symbol based on type
+      ctx.strokeStyle = '#a855f7';
+      ctx.lineWidth = 2;
+      ctx.fillStyle = '#a855f7';
 
       switch (n.type) {
-        case "resistor": {
+        case 'resistor':
+          // Draw zigzag resistor symbol
           ctx.beginPath();
-          ctx.moveTo(-8, 0);
-          ctx.lineTo(-4, -6);
-          ctx.lineTo(0, 6);
-          ctx.lineTo(4, -6);
-          ctx.lineTo(8, 0);
+          ctx.moveTo(-n.radius, 0);
+          for (let i = 0; i < 3; i++) {
+            ctx.lineTo(-n.radius + (i + 0.5) * n.radius, -n.radius);
+            ctx.lineTo(-n.radius + (i + 1) * n.radius, 0);
+          }
           ctx.stroke();
           break;
-        }
-        case "capacitor": {
+
+        case 'capacitor':
+          // Draw capacitor symbol
           ctx.beginPath();
-          ctx.moveTo(-10, 0);
-          ctx.lineTo(-2, 0);
-          ctx.moveTo(-2, -6);
-          ctx.lineTo(-2, 6);
-          ctx.moveTo(2, -6);
-          ctx.lineTo(2, 6);
-          ctx.moveTo(2, 0);
-          ctx.lineTo(10, 0);
+          ctx.moveTo(-n.radius, -n.radius);
+          ctx.lineTo(-n.radius, n.radius);
+          ctx.moveTo(n.radius, -n.radius);
+          ctx.lineTo(n.radius, n.radius);
           ctx.stroke();
           break;
-        }
-        case "inductor": {
+
+        case 'inductor':
+          // Draw inductor symbol
           ctx.beginPath();
-          for (let i = -2; i <= 2; i++) ctx.arc(i * 4, 0, 4, Math.PI, 0);
+          ctx.moveTo(-n.radius, 0);
+          for (let i = 0; i < 3; i++) {
+            ctx.arc(-n.radius + (i + 0.5) * n.radius, 0, n.radius / 2, 0, Math.PI * 2);
+          }
           ctx.stroke();
           break;
-        }
-        case "battery": {
+
+        case 'battery':
+          // Draw battery symbol
           ctx.beginPath();
-          ctx.moveTo(-4, -8);
-          ctx.lineTo(-4, 8);
-          ctx.moveTo(4, -4);
-          ctx.lineTo(4, 4);
+          ctx.moveTo(-n.radius, -n.radius);
+          ctx.lineTo(-n.radius, n.radius);
+          ctx.moveTo(n.radius, -n.radius);
+          ctx.lineTo(n.radius, n.radius);
+          ctx.moveTo(-n.radius / 2, -n.radius / 2);
+          ctx.lineTo(n.radius / 2, -n.radius / 2);
           ctx.stroke();
           break;
-        }
-        case "transistor": {
+
+        case 'transistor':
+          // Draw transistor symbol
           ctx.beginPath();
-          ctx.moveTo(-8, 0);
-          ctx.lineTo(0, 0);
-          ctx.lineTo(6, -6);
-          ctx.moveTo(0, 0);
-          ctx.lineTo(6, 6);
-          ctx.stroke();
-          break;
-        }
-        case "opamp": {
-          ctx.beginPath();
-          ctx.moveTo(-10, -10);
-          ctx.lineTo(10, 0);
-          ctx.lineTo(-10, 10);
+          ctx.moveTo(-n.radius, -n.radius);
+          ctx.lineTo(n.radius, 0);
+          ctx.lineTo(-n.radius, n.radius);
           ctx.closePath();
           ctx.stroke();
-          ctx.font = "8px sans-serif";
-          ctx.fillStyle = "#a855f7"; // Neon purple text
-          ctx.fillText("+", -14, -2);
-          ctx.fillText("-", -14, 8);
           break;
+
+        case 'opamp':
+          // Draw op-amp symbol
+          ctx.beginPath();
+          ctx.moveTo(-n.radius, -n.radius);
+          ctx.lineTo(n.radius, 0);
+          ctx.lineTo(-n.radius, n.radius);
+          ctx.closePath();
+          ctx.stroke();
+          // Draw + and - inputs
+          ctx.beginPath();
+          ctx.arc(-n.radius / 2, -n.radius / 2, n.radius / 4, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(-n.radius / 2, n.radius / 2);
+          ctx.lineTo(-n.radius / 2 + n.radius / 2, n.radius / 2);
+          ctx.stroke();
+          break;
+      }
+
+      // Draw pulse if active
+      if (n.pulseActive) {
+        const pulseGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, n.pulseRadius);
+        const opacity = 1 - (n.pulseRadius / n.maxPulseRadius);
+        pulseGradient.addColorStop(0, `rgba(168, 85, 247, ${opacity * 0.8})`);
+        pulseGradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
+        
+        ctx.beginPath();
+        ctx.arc(0, 0, n.pulseRadius, 0, Math.PI * 2);
+        ctx.fillStyle = pulseGradient;
+        ctx.fill();
+
+        n.pulseRadius += n.pulseSpeed;
+        if (n.pulseRadius > n.maxPulseRadius) {
+          n.pulseRadius = 0;
+          n.pulseActive = false;
         }
       }
+
       ctx.restore();
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      nodesRef.current.forEach((n) => {
-        n.connections.forEach((c) => {
-          // Draw basic connection line
-          ctx.beginPath();
-          ctx.moveTo(n.x, n.y);
-          ctx.lineTo(c.node.x, c.node.y);
-          ctx.strokeStyle = "rgba(168, 85, 247, 0.25)"; // More visible lines with purple tint
-          ctx.lineWidth = 1;
-          ctx.stroke();
+      
+      // Draw background gradient
+      const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      bgGradient.addColorStop(0, 'rgba(0, 0, 0, 0.1)');
+      bgGradient.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-          if (c.active) {
-            // Draw moving current with increased visibility
-            const dx = c.node.x - n.x;
-            const dy = c.node.y - n.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const speed = 3; // Increased speed for more obvious animation
-            c.currentPosition = (c.currentPosition + speed * c.direction) % dist;
-            if (c.currentPosition < 0) c.currentPosition = dist;
-
-            const ratio = c.currentPosition / dist;
-            const x = n.x + dx * ratio;
-            const y = n.y + dy * ratio;
-
-            // Larger current dot
+      // Draw connections with improved animation
+      nodesRef.current.forEach(node => {
+        node.connections.forEach(conn => {
+          if (conn.active) {
+            const gradient = ctx.createLinearGradient(node.x, node.y, conn.node.x, conn.node.y);
+            gradient.addColorStop(0, 'rgba(168, 85, 247, 0.3)');
+            gradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.6)');
+            gradient.addColorStop(1, 'rgba(168, 85, 247, 0.3)');
+            
             ctx.beginPath();
-            ctx.arc(x, y, 3, 0, Math.PI * 2);
-            ctx.fillStyle = "#a855f7"; // Neon purple
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(conn.node.x, conn.node.y);
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw moving dot along the connection
+            const progress = conn.currentPosition;
+            const x = node.x + (conn.node.x - node.x) * progress;
+            const y = node.y + (conn.node.y - node.y) * progress;
+            
+            const dotGradient = ctx.createRadialGradient(x, y, 0, x, y, 4);
+            dotGradient.addColorStop(0, 'rgba(168, 85, 247, 0.8)');
+            dotGradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
+            
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.fillStyle = dotGradient;
             ctx.fill();
 
-            // Stronger glow effect
-            ctx.beginPath();
-            ctx.arc(x, y, 6, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(168, 85, 247, 0.5)"; // Brighter purple glow
-            ctx.fill();
+            // Update position
+            conn.currentPosition += 0.02 * conn.direction;
+            if (conn.currentPosition >= 1) {
+              conn.currentPosition = 0;
+            } else if (conn.currentPosition <= 0) {
+              conn.currentPosition = 1;
+            }
           }
         });
+      });
 
-        // Draw node with component symbol
-        drawSymbol(ctx, n);
-
-        if (n.pulseActive) {
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, n.pulseRadius, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(168, 85, 247, ${1 - n.pulseRadius / n.maxPulseRadius})`; // Purple pulse
-          ctx.lineWidth = 2; // Thicker line for visibility
-          ctx.stroke();
-          n.pulseRadius += n.pulseSpeed;
-          if (n.pulseRadius > n.maxPulseRadius) {
-            n.pulseActive = false;
-            n.pulseRadius = 0;
-          }
-        }
+      // Draw nodes
+      nodesRef.current.forEach(node => {
+        drawSymbol(ctx, node);
       });
 
       animationRef.current = requestAnimationFrame(animate);
