@@ -71,7 +71,7 @@ const Experience = () => {
     <Layout>
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-purple-300 mb-4">Professional Experience</h1>
-        <p className="text-gray-300 mb-12 max-w-3xl">
+        <p className="text-gray-300 mb-12 max-w-3xl text-center mx-auto">
           A detailed overview of my professional experience in the electrical engineering field, including internships, research positions, and leadership roles that have contributed to my technical and soft skill development.
         </p>
 
