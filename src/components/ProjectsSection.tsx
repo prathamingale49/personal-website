@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from 'lucide-react';
@@ -7,31 +6,31 @@ import { Link } from 'react-router-dom';
 export const ProjectsSection: React.FC = () => {
   const projects = [
     {
-      id: "smart-home-power-monitor",
-      title: "Smart Home Power Monitor",
-      description: "Designed and built a device that monitors power consumption of household appliances in real-time and reports data to a mobile app.",
-      tags: ["Arduino", "PCB Design", "IoT", "Mobile App"],
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      id: "bms-design",
+      title: "Battery Management System",
+      description: "Designed and implemented a comprehensive BMS for the Yellowjacket Space Program's rocket, featuring cell balancing, temperature monitoring, and state-of-charge estimation.",
+      tags: ["PCB Design", "Power Electronics", "Embedded Systems", "Altium"],
+      image: "/images/bms.jpg"
     },
     {
-      id: "automated-hydroponics-system",
-      title: "Automated Hydroponics System",
-      description: "Created an automated system that monitors and maintains optimal growing conditions for plants using sensors and microcontrollers.",
-      tags: ["Sensors", "Microcontrollers", "Automation", "Python"],
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1"
+      id: "umbilical-system",
+      title: "Rocket Umbilical System",
+      description: "Developed the interface system between ground support equipment and the rocket, including power distribution, sensor integration, and data acquisition capabilities.",
+      tags: ["Interface Design", "Signal Processing", "PCB Layout", "Testing"],
+      image: "/images/umbilical.jpg"
     },
     {
-      id: "audio-amplifier-design",
-      title: "Audio Amplifier Design",
-      description: "Designed and implemented a Class D audio amplifier with digital signal processing capabilities for enhanced sound quality.",
-      tags: ["Analog Design", "DSP", "PCB Layout", "Testing"],
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+      id: "smart-belt",
+      title: "Smart Navigation Belt",
+      description: "Created an assistive device for visually impaired individuals using ultrasonic sensors and haptic feedback to detect obstacles and provide navigation assistance.",
+      tags: ["Arduino", "Sensors", "Embedded Systems", "Prototyping"],
+      image: "/images/smartbelt.jpg"
     }
   ];
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-3">Projects</h2>
+      <h2 className="text-3xl font-bold mb-3 text-purple-300">Projects</h2>
       <div className="h-1 w-24 bg-gradient-to-r from-purple-400 to-fuchsia-500 mb-8"></div>
       <p className="text-gray-300 mb-12 max-w-3xl text-center mx-auto w-fit">
         Here are some of my notable electrical engineering projects. Each demonstrates different skills and technologies I've worked with, along with the project's purpose and outcome.
@@ -61,12 +60,9 @@ export const ProjectsSection: React.FC = () => {
               </div>
             </CardContent>
             <CardFooter>
-              <Link 
-                to={`/projects/${project.id}`}
-                className="text-purple-400 hover:text-purple-300 flex items-center gap-1 text-sm"
-              >
-                View Project <ArrowRight size={16} />
-              </Link>
+              <div className="text-purple-400 flex items-center gap-1 text-sm">
+                Page Under Construction <ArrowRight size={16} />
+              </div>
             </CardFooter>
           </Card>
         ))}
