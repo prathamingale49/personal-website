@@ -75,60 +75,64 @@ export const ScrollCircuit: React.FC = () => {
         return nodes;
       };
 
+      // Calculate column widths to fill the screen
+      const columnWidth = window.innerWidth * 0.2; // 20% of screen width for each main column
+      const extraColumnWidth = window.innerWidth * 0.1; // 10% for extra columns
+
       // Create more circuit paths with more nodes
       const leftCircuit = createCircuitPath(
-        window.innerWidth * 0.1,
+        window.innerWidth * 0.05, // Start at 5% of screen width
         100,
-        window.innerWidth * 0.15,
+        columnWidth,
         totalHeight - 200,
         12
       );
       
       const centerLeftCircuit = createCircuitPath(
-        window.innerWidth * 0.3,
+        window.innerWidth * 0.25, // Start at 25% of screen width
         100,
-        window.innerWidth * 0.15,
+        columnWidth,
         totalHeight - 200,
         12
       );
       
       const centerRightCircuit = createCircuitPath(
-        window.innerWidth * 0.5,
+        window.innerWidth * 0.45, // Start at 45% of screen width
         100,
-        window.innerWidth * 0.15,
+        columnWidth,
         totalHeight - 200,
         12
       );
 
       const rightCircuit = createCircuitPath(
-        window.innerWidth * 0.7,
+        window.innerWidth * 0.65, // Start at 65% of screen width
         100,
-        window.innerWidth * 0.15,
+        columnWidth,
         totalHeight - 200,
         12
       );
 
       // Add additional circuit paths
       const extraLeftCircuit = createCircuitPath(
-        window.innerWidth * 0.2,
+        window.innerWidth * 0.15, // Between left and center-left
         200,
-        window.innerWidth * 0.1,
+        extraColumnWidth,
         totalHeight - 300,
         10
       );
 
       const extraCenterCircuit = createCircuitPath(
-        window.innerWidth * 0.4,
+        window.innerWidth * 0.35, // Between center-left and center-right
         200,
-        window.innerWidth * 0.1,
+        extraColumnWidth,
         totalHeight - 300,
         10
       );
 
       const extraRightCircuit = createCircuitPath(
-        window.innerWidth * 0.6,
+        window.innerWidth * 0.55, // Between center-right and right
         200,
-        window.innerWidth * 0.1,
+        extraColumnWidth,
         totalHeight - 300,
         10
       );
@@ -191,6 +195,14 @@ export const ScrollCircuit: React.FC = () => {
         }
       }
 
+      // Initialize all connections as active
+      nodesRef.current.forEach(node => {
+        node.connections.forEach(conn => {
+          conn.active = true;
+          conn.direction = 1; // All flow in the same direction
+        });
+      });
+
       nodesRef.current = [
         ...leftCircuit,
         ...centerLeftCircuit,
@@ -235,39 +247,36 @@ export const ScrollCircuit: React.FC = () => {
       lastScrollPositionRef.current = scrollTop;
       isScrollingDownRef.current = down;
       
-      // Activate connections based on scroll position
-      activateConnectionsByScrollPosition(scrollPercentRef.current);
+      // Keep all connections active during scrolling
+      nodesRef.current.forEach(node => {
+        node.connections.forEach(conn => {
+          conn.active = true;
+          // Update direction based on scroll direction
+          conn.direction = down ? 1 : -1;
+        });
+      });
       
-      // Trigger node pulses only when scrolling
-      if (down || !down) {
-        triggerNodePulses();
-      }
+      // Trigger node pulses during scrolling
+      triggerNodePulses();
       
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
       scrollTimeoutRef.current = setTimeout(() => {
         isScrollingDownRef.current = false;
-        // Don't deactivate connections when scrolling stops
+        // Keep connections active but reset direction
+        nodesRef.current.forEach(node => {
+          node.connections.forEach(conn => {
+            conn.direction = 1;
+          });
+        });
       }, 200);
     };
 
     const activateConnectionsByScrollPosition = (percent: number) => {
-      const unique = nodesRef.current.flatMap((n) => n.connections.map((c) => ({ s: n, c })));
-      
-      // Determine how many connections to activate based on scroll percentage
-      const connectionsToActivate = Math.floor(unique.length * percent);
-      
-      // Update connection state based on exact scroll position
-      unique.forEach((item, idx) => {
-        // Use scroll position to determine if connection should be active
-        const shouldBeActive = idx < connectionsToActivate;
-        
-        item.c.active = shouldBeActive;
-        
-        // Reverse direction when scrolling up
-        if (shouldBeActive) {
-          item.c.direction = isScrollingDownRef.current ? 1 : -1;
-          item.c.currentPosition = isScrollingDownRef.current ? 0 : 1;
-        }
+      // Keep all connections active
+      nodesRef.current.forEach(node => {
+        node.connections.forEach(conn => {
+          conn.active = true;
+        });
       });
     };
     
