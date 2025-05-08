@@ -115,23 +115,28 @@ const Resume = () => {
                   <div>
                     <h3 className="text-lg font-semibold mb-3 text-purple-300">Hardware</h3>
                     <ul className="list-disc list-inside text-gray-300 space-y-1">
-                      <li>Circuit Design and Analysis</li>
-                      <li>PCB Layout (Altium Designer, KiCad)</li>
-                      <li>Microcontrollers (Arduino, ESP32)</li>
-                      <li>FPGA Development</li>
-                      <li>Test Equipment (Oscilloscopes, Multimeters)</li>
-                      <li>Signal Processing</li>
+                      <li>PCB Schematic/Layout (Altium Designer, KiCad)</li>
+                      <li>Soldering & Rework (SMD, THT, QFN, BGA)</li>
+                      <li>DC-DC Converters (Buck, Boost, LDO)</li>
+                      <li>OScilloscopes, Logic Analyzers, Multimeters</li>
+                      <li>Harnessing, Signal Debug, HITL Testbeds</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3 text-purple-300">Embedded Systems</h3>
+                    <ul className="list-disc list-inside text-gray-300 space-y-1">
+                      <li>Microcontrollers (STM32, ESP32, ATMega)</li>
+                      <li>Rust, C, C++ Programming</li>
+                      <li>Firmware for SPI, ADCs, GPIO, Ethernet</li>
+                      <li>FPGA Basics (Quartus, VHDL)</li>
                     </ul>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-3 text-purple-300">Software</h3>
                     <ul className="list-disc list-inside text-gray-300 space-y-1">
-                      <li>MATLAB & Simulink</li>
-                      <li>C/C++ Programming</li>
-                      <li>Python</li>
-                      <li>LTspice/PSpice</li>
-                      <li>CAD Software (SolidWorks)</li>
-                      <li>VHDL/Verilog</li>
+                      <li>MATLAB, Simulink, Python</li>
+                      <li>LTSpice, PSpice, Arduino IDE</li>
+                      <li>Git, VSCode, Keil, Jupyter</li>
                     </ul>
                   </div>
                 </div>
