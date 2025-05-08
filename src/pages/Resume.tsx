@@ -196,7 +196,7 @@ const Resume = () => {
                   </ul>
                 </div>
 
-                <div className="mb-6 pb-6 border-b border-gray-700">
+                <div className="pb-6 border-gray-700">
                   <div className="flex justify-between mb-1">
                     <h3 className="text-xl font-semibold">LED Chaser PCB</h3>
                     <span className="text-purple-400">October 2024</span>
