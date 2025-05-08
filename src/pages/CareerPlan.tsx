@@ -60,9 +60,9 @@ const CareerPlan = () => {
                 <div className="absolute left-6 top-0 h-full w-1 bg-gradient-to-b from-purple-700 to-purple-900"></div>
                 <div className="relative pl-16">
                   <div className="absolute left-0 top-1 w-12 h-12 rounded-full bg-purple-900 flex items-center justify-center">
-                    <span className="text-purple-300 font-bold">3-5</span>
+                    <span className="text-purple-300 font-bold">4-6</span>
                   </div>
-                  <h3 className="text-xl font-bold text-purple-300 mb-4">Mid-term Goals (3-5 years)</h3>
+                  <h3 className="text-xl font-bold text-purple-300 mb-4">Mid-term Goals (4-6 years)</h3>
                   <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                     <ul className="list-disc list-inside text-gray-300 space-y-3">
                       <li>Complete Master's degree in Electrical Engineering with specialization in Analog or Power Electronics</li>
