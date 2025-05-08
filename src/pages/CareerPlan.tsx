@@ -10,7 +10,7 @@ const CareerPlan = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-purple-300 mb-4">Career Plan</h1>
           <p className="text-gray-300 mb-12">
-            My strategic roadmap for professional development in the electrical engineering field, outlining short and long-term goals, specialization interests, and milestones.
+            My evolving roadmap as an electrical engineer—fueled by hands-on experience, mission-critical hardware, and a love for building systems that work when they have to.
           </p>
 
           {/* Career Objective */}
@@ -21,10 +21,9 @@ const CareerPlan = () => {
             </div>
             <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-8">
               <p className="text-gray-200 text-lg leading-relaxed">
-                To become a specialized electrical engineer focusing on renewable energy systems and power electronics, 
-                contributing to sustainable technology development while maintaining a balance between technical expertise, 
-                project management, and innovation. I aim to work at the intersection of electrical engineering and clean 
-                energy to help advance solutions for global energy challenges.
+                To become a leading electrical engineer specializing in avionics systems, embedded hardware, and power electronics, 
+                contributing to the next generation of aerospace and energy platforms. I aim to operate at the intersection of 
+                hardware reliability and high-performance design, where precision engineering meets real-world impact.
               </p>
             </div>
           </section>
@@ -41,16 +40,16 @@ const CareerPlan = () => {
                 <div className="absolute left-6 top-0 h-full w-1 bg-gradient-to-b from-purple-400 to-purple-700"></div>
                 <div className="relative pl-16">
                   <div className="absolute left-0 top-1 w-12 h-12 rounded-full bg-purple-900 flex items-center justify-center">
-                    <span className="text-purple-300 font-bold">1-2</span>
+                    <span className="text-purple-300 font-bold">1-3</span>
                   </div>
-                  <h3 className="text-xl font-bold text-purple-300 mb-4">Short-term Goals (1-2 years)</h3>
+                  <h3 className="text-xl font-bold text-purple-300 mb-4">Short-term Goals (1-3 years)</h3>
                   <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                     <ul className="list-disc list-inside text-gray-300 space-y-3">
-                      <li>Complete Bachelor's degree in Electrical Engineering with focus on power systems</li>
-                      <li>Secure an entry-level position at a renewable energy or power electronics company</li>
-                      <li>Obtain IEEE Power Electronics certification</li>
-                      <li>Develop proficiency in power systems simulation software</li>
-                      <li>Build a portfolio of 3-5 significant personal projects in sustainable energy</li>
+                      <li>Complete B.S. in Electrical Engineering with Minor in Computer Science at Georgia Tech</li>
+                      <li>Lead hardware system design projects in student rocketry & embedded systems</li>
+                      <li>Excel in internships at top-tier hardware design companies</li>
+                      <li>Deepen skills in PCB design, system bring-up, and power delivery</li>
+                      <li>Publish technical documentation and eventually develop an open-source hardware project</li>
                     </ul>
                   </div>
                 </div>
@@ -66,12 +65,12 @@ const CareerPlan = () => {
                   <h3 className="text-xl font-bold text-purple-300 mb-4">Mid-term Goals (3-5 years)</h3>
                   <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                     <ul className="list-disc list-inside text-gray-300 space-y-3">
-                      <li>Complete Master's degree in Electrical Engineering with specialization in Power Electronics</li>
-                      <li>Progress to mid-level engineering role with project management responsibilities</li>
+                      <li>Complete Master's degree in Electrical Engineering with specialization in Analog or Power Electronics</li>
+                      <li>Transition into a full-time design role in avionics, power systems, or embedded hardware</li>
                       <li>Obtain Professional Engineer (PE) license</li>
                       <li>Publish research or technical articles in industry journals</li>
-                      <li>Develop expertise in renewable integration with power grids</li>
-                      <li>Participate in industry conferences as a presenter</li>
+                      <li>Contribute to mission-critical flight hardware or industrial power platforms</li>
+                      <li>Gain ownership over full PCB systems and design program cycles</li>
                     </ul>
                   </div>
                 </div>
@@ -86,12 +85,12 @@ const CareerPlan = () => {
                   <h3 className="text-xl font-bold text-purple-300 mb-4">Long-term Goals (10+ years)</h3>
                   <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                     <ul className="list-disc list-inside text-gray-300 space-y-3">
-                      <li>Reach senior engineer or engineering manager position</li>
-                      <li>Lead major renewable energy infrastructure projects</li>
-                      <li>Potentially pursue MBA or Engineering Management degree</li>
-                      <li>Consider entrepreneurship in clean tech or energy consulting</li>
-                      <li>Mentor younger engineers and contribute to STEM education initiatives</li>
-                      <li>Establish recognition as an industry expert in power systems and renewable energy</li>
+                      <li>Become a senior/principal engineer or hardware design manager</li>
+                      <li>Consider pursuing an MBA or Engineering Management degree</li>
+                      <li>Mentor younger engineers and help grow new technical teams</li>
+                      <li>Lead cross-functional teams and contribute to strategic business decisions</li>
+                      <li>Contribute to industry standards and publish in peer-reveiewed venues</li>
+                      <li>Potentially found or join and early-stage startup with a focus on hardware</li>
                     </ul>
                   </div>
                 </div>
@@ -109,24 +108,24 @@ const CareerPlan = () => {
               <div>
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Technical Skills</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Advanced power electronics design and simulation</li>
-                  <li>Grid integration techniques for renewable energy</li>
-                  <li>Energy storage systems and battery management</li>
-                  <li>Power quality analysis and improvement methods</li>
-                  <li>SCADA systems and industrial control networks</li>
-                  <li>Programming for embedded systems in energy applications</li>
+                  <li>Complex PCB layout and signal integrity optimization</li>
+                  <li>High efficiency power conversion and distribution</li>
+                  <li>Embedded firmware for hardware control (Rust, C, C++)</li>
+                  <li>Hardware-in-the-loop system design and sensor emulation</li>
+                  <li>RF-specific PCB and hardware design, simulation, and testing</li>
+                  <li>Battery management, power switching, and protection circuits</li>
                 </ul>
               </div>
               
               <div>
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Professional Skills</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Project management and team leadership</li>
-                  <li>Technical writing and documentation</li>
-                  <li>Client communication and requirements gathering</li>
-                  <li>Budget management and resource allocation</li>
-                  <li>Regulatory compliance knowledge for energy systems</li>
-                  <li>Public speaking and technical presentations</li>
+                  <li>Technical communication and cross-disciplinary collaboration</li>
+                  <li>System architecture and long-term maintenance planning</li>
+                  <li>Presentation skills for design reviews and customer meetings</li>
+                  <li>Mentorship, technical leadership, and knowledge transfer</li>
+                  <li>Agile hardware project planning and documentation</li>
+                  <li>Product development and lifecycle management</li>
                 </ul>
               </div>
             </div>
@@ -142,22 +141,22 @@ const CareerPlan = () => {
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Primary Focus Areas</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Solar and wind power integration systems</li>
-                  <li>Energy storage and grid stabilization</li>
-                  <li>Microgrids and distributed generation</li>
-                  <li>Power quality and efficiency optimization</li>
-                  <li>Smart grid technologies</li>
+                  <li>Avionics system architecture and validation</li>
+                  <li>High-reliability power electronics for aerospace</li>
+                  <li>Embedded systems for energy and automation</li>
+                  <li>Robotics hardware: sensors, control, and actuation</li>
+                  <li>Hardware-in-the-loop test infrastructure</li>
                 </ul>
               </div>
               
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-purple-300 mb-3">Target Industries</h3>
                 <ul className="list-disc list-inside text-gray-300 space-y-2">
-                  <li>Renewable energy development companies</li>
-                  <li>Utility-scale power electronics manufacturers</li>
-                  <li>Electric vehicle charging infrastructure</li>
-                  <li>Energy consulting firms</li>
-                  <li>Research institutions focusing on sustainable energy</li>
+                  <li>Spaceflight and satellite systems</li>
+                  <li>Electric vehicle power and energy platforms</li>
+                  <li>Autonomous aircraft and UAV hardware development</li>
+                  <li>Industrial robotics, control, and automation</li>
+                  <li>Clean energy storage and distribution systems</li>
                 </ul>
               </div>
             </div>
