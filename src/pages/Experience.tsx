@@ -116,9 +116,9 @@ const Experience = () => {
                       
                       <div className="mb-6">
                         <h4 className="text-lg font-semibold text-purple-300 mb-3">Key Achievements</h4>
-                        <ul className="space-y-2">
+                        <ul className="space-y-2 text-center">
                           {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="flex items-start">
+                            <li key={i} className="flex items-center justify-center">
                               <div className="text-purple-400 mr-2">•</div>
                               <div className="text-gray-300">{achievement}</div>
                             </li>
@@ -128,7 +128,7 @@ const Experience = () => {
                       
                       <div>
                         <h4 className="text-sm font-semibold text-gray-400 mb-2">TECHNOLOGIES & SKILLS</h4>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2 justify-center">
                           {exp.technologies.map((tech, i) => (
                             <span key={i} className="bg-gray-700 px-3 py-1 rounded-full text-xs text-purple-200">
                               {tech}
@@ -169,7 +169,7 @@ const Experience = () => {
               <div>
                 <div className="flex justify-between mb-1">
                   <h3 className="text-lg font-semibold">STEM Outreach Volunteer</h3>
-                  <span className="text-purple-400 text-sm">2022 - Present</span>
+                  <span className="text-purple-400 text-sm">2022 - 2024</span>
                 </div>
                 <p className="text-gray-400 mb-2">Local High Schools</p>
                 <p className="text-gray-300">
@@ -193,7 +193,7 @@ const Experience = () => {
                   <h3 className="text-lg font-semibold">Faculty Honors & Dean's List</h3>
                   <span className="text-purple-400 text-sm">2024 - Present</span>
                 </div>
-                <p className="text-gray-300">
+                <p className="text-gray-300 text-center">
                   Maintained perfect 4.0 GPA for all semesters at Georgia Tech.
                 </p>
               </div>
@@ -201,9 +201,9 @@ const Experience = () => {
               <div className="mb-6 pb-6 border-b border-gray-700">
                 <div className="flex justify-between mb-1">
                   <h3 className="text-lg font-semibold">National Merit Scholarship</h3>
-                  <span className="text-purple-400 text-sm">2024</span>
+                  <span className="text-purple-400 text-sm">2023</span>
                 </div>
-                <p className="text-gray-300">
+                <p className="text-gray-300 text-center">
                   Awarded for exceptional academic achievement and potential.
                 </p>
               </div>
@@ -211,9 +211,9 @@ const Experience = () => {
               <div className="mb-6 pb-6 border-b border-gray-700">
                 <div className="flex justify-between mb-1">
                   <h3 className="text-lg font-semibold">Perfect 36 ACT Score</h3>
-                  <span className="text-purple-400 text-sm">2024</span>
+                  <span className="text-purple-400 text-sm">2023</span>
                 </div>
-                <p className="text-gray-300">
+                <p className="text-gray-300 text-center">
                   Achieved perfect score in all sections of the ACT.
                 </p>
               </div>
@@ -223,8 +223,8 @@ const Experience = () => {
                   <h3 className="text-lg font-semibold">10x Top 4 Medalist</h3>
                   <span className="text-purple-400 text-sm">2019 - 2024</span>
                 </div>
-                <p className="text-gray-400 mb-2">NC Science Olympiad</p>
-                <p className="text-gray-300">
+                <p className="text-gray-400 mb-2 text-center">NC Science Olympiad</p>
+                <p className="text-gray-300 text-center">
                   Consistently placed in top 4 positions across multiple events in state-level competitions.
                 </p>
               </div>
