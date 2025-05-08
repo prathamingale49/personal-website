@@ -56,7 +56,7 @@ export const ScrollCircuit: React.FC = () => {
     const createCircuitNodes = () => {
       nodesRef.current = [];
       const totalHeight = document.body.scrollHeight;
-      const nodeDistance = 120; // Decreased from 150 to fit more nodes
+      const nodeDistance = 120;
       
       // Create structured circuit paths with more nodes
       const createCircuitPath = (startX: number, startY: number, width: number, height: number, numNodes: number) => {
@@ -77,34 +77,50 @@ export const ScrollCircuit: React.FC = () => {
 
       // Create more circuit paths with more nodes
       const leftCircuit = createCircuitPath(
+        window.innerWidth * 0.1,
+        100,
         window.innerWidth * 0.15,
-        100,
-        window.innerWidth * 0.2,
         totalHeight - 200,
-        12 // Increased from 8 to 12
+        12
       );
       
-      const centerCircuit = createCircuitPath(
-        window.innerWidth * 0.4,
+      const centerLeftCircuit = createCircuitPath(
+        window.innerWidth * 0.3,
         100,
-        window.innerWidth * 0.2,
+        window.innerWidth * 0.15,
         totalHeight - 200,
-        12 // Increased from 8 to 12
+        12
       );
       
+      const centerRightCircuit = createCircuitPath(
+        window.innerWidth * 0.5,
+        100,
+        window.innerWidth * 0.15,
+        totalHeight - 200,
+        12
+      );
+
       const rightCircuit = createCircuitPath(
-        window.innerWidth * 0.65,
+        window.innerWidth * 0.7,
         100,
-        window.innerWidth * 0.2,
+        window.innerWidth * 0.15,
         totalHeight - 200,
-        12 // Increased from 8 to 12
+        12
       );
 
       // Add additional circuit paths
       const extraLeftCircuit = createCircuitPath(
-        window.innerWidth * 0.25,
+        window.innerWidth * 0.2,
         200,
-        window.innerWidth * 0.15,
+        window.innerWidth * 0.1,
+        totalHeight - 300,
+        10
+      );
+
+      const extraCenterCircuit = createCircuitPath(
+        window.innerWidth * 0.4,
+        200,
+        window.innerWidth * 0.1,
         totalHeight - 300,
         10
       );
@@ -112,7 +128,7 @@ export const ScrollCircuit: React.FC = () => {
       const extraRightCircuit = createCircuitPath(
         window.innerWidth * 0.6,
         200,
-        window.innerWidth * 0.15,
+        window.innerWidth * 0.1,
         totalHeight - 300,
         10
       );
@@ -135,38 +151,53 @@ export const ScrollCircuit: React.FC = () => {
 
       // Connect the circuits
       connectCircuitPath(leftCircuit);
-      connectCircuitPath(centerCircuit);
+      connectCircuitPath(centerLeftCircuit);
+      connectCircuitPath(centerRightCircuit);
       connectCircuitPath(rightCircuit);
       connectCircuitPath(extraLeftCircuit);
+      connectCircuitPath(extraCenterCircuit);
       connectCircuitPath(extraRightCircuit);
 
       // Connect main circuits horizontally
-      connectCircuitsHorizontally(leftCircuit, centerCircuit);
-      connectCircuitsHorizontally(centerCircuit, rightCircuit);
-      connectCircuitsHorizontally(extraLeftCircuit, extraRightCircuit);
+      connectCircuitsHorizontally(leftCircuit, centerLeftCircuit);
+      connectCircuitsHorizontally(centerLeftCircuit, centerRightCircuit);
+      connectCircuitsHorizontally(centerRightCircuit, rightCircuit);
+      connectCircuitsHorizontally(extraLeftCircuit, extraCenterCircuit);
+      connectCircuitsHorizontally(extraCenterCircuit, extraRightCircuit);
 
       // Add more complex connections
       for (let i = 1; i < leftCircuit.length - 1; i += 2) {
         if (leftCircuit[i] && extraLeftCircuit[i - 1]) {
           connectNodes(leftCircuit[i], extraLeftCircuit[i - 1]);
         }
-        if (rightCircuit[i] && extraRightCircuit[i - 1]) {
-          connectNodes(rightCircuit[i], extraRightCircuit[i - 1]);
+        if (centerLeftCircuit[i] && extraCenterCircuit[i - 1]) {
+          connectNodes(centerLeftCircuit[i], extraCenterCircuit[i - 1]);
+        }
+        if (centerRightCircuit[i] && extraRightCircuit[i - 1]) {
+          connectNodes(centerRightCircuit[i], extraRightCircuit[i - 1]);
         }
       }
 
       // Add some feedback loops
       for (let i = 2; i < leftCircuit.length - 2; i += 2) {
-        if (leftCircuit[i] && rightCircuit[i + 1]) {
-          connectNodes(leftCircuit[i], rightCircuit[i + 1]);
+        if (leftCircuit[i] && centerLeftCircuit[i + 1]) {
+          connectNodes(leftCircuit[i], centerLeftCircuit[i + 1]);
+        }
+        if (centerLeftCircuit[i] && centerRightCircuit[i + 1]) {
+          connectNodes(centerLeftCircuit[i], centerRightCircuit[i + 1]);
+        }
+        if (centerRightCircuit[i] && rightCircuit[i + 1]) {
+          connectNodes(centerRightCircuit[i], rightCircuit[i + 1]);
         }
       }
 
       nodesRef.current = [
         ...leftCircuit,
-        ...centerCircuit,
+        ...centerLeftCircuit,
+        ...centerRightCircuit,
         ...rightCircuit,
         ...extraLeftCircuit,
+        ...extraCenterCircuit,
         ...extraRightCircuit
       ];
     };
@@ -215,12 +246,7 @@ export const ScrollCircuit: React.FC = () => {
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
       scrollTimeoutRef.current = setTimeout(() => {
         isScrollingDownRef.current = false;
-        // Deactivate all connections when scrolling stops
-        nodesRef.current.forEach(node => {
-          node.connections.forEach(conn => {
-            conn.active = false;
-          });
-        });
+        // Don't deactivate connections when scrolling stops
       }, 200);
     };
 
