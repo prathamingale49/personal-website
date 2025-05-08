@@ -18,7 +18,13 @@ export const ExperienceSection: React.FC = () => {
       title: "Avionics Hardware-In-the-Loop Lead",
       company: "Yellowjacket Space Program",
       period: "April 2025 - Present",
-      description: "Leading the design of a comprehensive HITL program for the avionics system at YJSP. Ultimate goal is full vehicle simulation with hardware components, allowing both hardware and software validation."
+      description: "Leading the design of a comprehensive HITL program for the avionics system at YJSP. Ultimate goal is full vehicle simulation with hardware components, allowing both hardware and software validation.",
+      achievements: [
+        "Designing HITL test system to validate avionics sensor boards",
+        "Building modular PCBs to emulate RTDs, thermocouples, and pressure sensors",
+        "Leading system architecture for DSUB-connected test interfaces and automation"
+      ],
+      technologies: ["HITL Testing", "PCB Design", "Sensor Emulation", "System Architecture", "Test Automation"]
     },
     {
       title: "Battery Management System Responsible Engineer",

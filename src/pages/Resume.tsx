@@ -96,9 +96,9 @@ const Resume = () => {
                   </div>
                   <p className="text-gray-400 mb-2">Yellowjacket Space Program</p>
                   <ul className="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Designed HITL test system to validate avionics sensor boards</li>
-                    <li>Built modular PCBs to emulate RTDs, thermocouples, and pressure sensors</li>
-                    <li>Led system architecture for DSUB-connected test interfaces and automation</li>
+                    <li>Designing HITL test system to validate avionics sensor boards</li>
+                    <li>Building modular PCBs to emulate RTDs, thermocouples, and pressure sensors</li>
+                    <li>Leading system architecture for DSUB-connected test interfaces and automation</li>
                   </ul>
                 </div>
 

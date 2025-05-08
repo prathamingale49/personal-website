@@ -33,9 +33,9 @@ const Experience = () => {
       location: "Georgia Tech",
       description: "Leading the development of HITL test systems for validating avionics sensor boards and ensuring reliable rocket systems.",
       achievements: [
-        "Designed HITL test system to validate avionics sensor boards",
-        "Built modular PCBs to emulate RTDs, thermocouples, and pressure sensors",
-        "Led system architecture for DSUB-connected test interfaces and automation"
+        "Designing HITL test system to validate avionics sensor boards",
+        "Building modular PCBs to emulate RTDs, thermocouples, and pressure sensors",
+        "Leading system architecture for DSUB-connected test interfaces and automation"
       ],
       technologies: ["HITL Testing", "PCB Design", "Sensor Emulation", "System Architecture", "Test Automation"]
     },
