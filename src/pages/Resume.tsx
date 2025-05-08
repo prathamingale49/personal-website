@@ -18,7 +18,7 @@ const Resume = () => {
           <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-8 mb-8">
             <div className="flex flex-col md:flex-row gap-8">
               <div className="w-full md:w-2/3">
-                <h2 className="text-2xl font-bold text-white mb-2">Your Name</h2>
+                <h2 className="text-2xl font-bold text-white mb-2">Pratham Ingale</h2>
                 <h3 className="text-xl text-purple-300 mb-4">Electrical Engineering Student</h3>
                 <p className="text-gray-300 mb-4">
                   Builder of mission-critical hardware and systems with hands-on experience in PCB design, power electronics, and embedded systems.
@@ -54,36 +54,79 @@ const Resume = () => {
                 <Briefcase size={20} className="text-purple-400" />
                 <h2 className="text-2xl font-bold">Experience</h2>
               </div>
+
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
+
+                {/* SpaceX */}
                 <div className="mb-6 pb-6 border-b border-gray-700">
                   <div className="flex justify-between mb-1">
-                    <h3 className="text-xl font-semibold">Electrical Engineering Intern</h3>
-                    <span className="text-purple-400">Jun 2023 - Aug 2023</span>
+                    <h3 className="text-xl font-semibold">Avionics Hardware Design Intern</h3>
+                    <span className="text-purple-400">Fall 2025</span>
                   </div>
-                  <p className="text-gray-400 mb-2">Tech Solutions Inc.</p>
+                  <p className="text-gray-400 mb-2">SpaceX – Starlink Aviation</p>
                   <ul className="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Assisted in the design and testing of circuit boards for IoT devices</li>
-                    <li>Conducted performance analysis and documentation of test results</li>
-                    <li>Collaborated with cross-functional teams on product development</li>
-                    <li>Created technical documentation for internal and client use</li>
+                    <li>Details to be added after internship completion</li>
                   </ul>
                 </div>
-                
+
+                {/* Tesla */}
+                <div className="mb-6 pb-6 border-b border-gray-700">
+                  <div className="flex justify-between mb-1">
+                    <h3 className="text-xl font-semibold">Cell Electronics Design Intern</h3>
+                    <span className="text-purple-400">Summer 2025</span>
+                  </div>
+                  <p className="text-gray-400 mb-2">Tesla – Cell Manufacturing</p>
+                  <ul className="list-disc list-inside text-gray-300 space-y-1">
+                    <li>Details to be added after internship completion</li>
+                  </ul>
+                </div>
+
+                {/* HITL */}
+                <div className="mb-6 pb-6 border-b border-gray-700">
+                  <div className="flex justify-between mb-1">
+                    <h3 className="text-xl font-semibold">Hardware-in-the-Loop Lead</h3>
+                    <span className="text-purple-400">April 2025 – Present</span>
+                  </div>
+                  <p className="text-gray-400 mb-2">Yellowjacket Space Program</p>
+                  <ul className="list-disc list-inside text-gray-300 space-y-1">
+                    <li>Designed HITL test system to validate avionics sensor boards</li>
+                    <li>Built modular PCBs to emulate RTDs, thermocouples, and pressure sensors</li>
+                    <li>Led system architecture for DSUB-connected test interfaces and automation</li>
+                  </ul>
+                </div>
+
+                {/* BMS */}
+                <div className="mb-6 pb-6 border-b border-gray-700">
+                  <div className="flex justify-between mb-1">
+                    <h3 className="text-xl font-semibold">Battery Management System Engineer</h3>
+                    <span className="text-purple-400">January 2025 – Present</span>
+                  </div>
+                  <p className="text-gray-400 mb-2">Yellowjacket Space Program</p>
+                  <ul className="list-disc list-inside text-gray-300 space-y-1">
+                    <li>Designed a 4-layer BMS PCB with converters, op-amps, and load switches</li>
+                    <li>Wrote Rust firmware for SPI comms, power control, and telemetry logging</li>
+                    <li>Handled bring-up and validation using oscilloscopes and debug tools</li>
+                  </ul>
+                </div>
+
+                {/* Umbilical & Harnessing */}
                 <div>
                   <div className="flex justify-between mb-1">
-                    <h3 className="text-xl font-semibold">Research Assistant</h3>
-                    <span className="text-purple-400">Jan 2023 - May 2023</span>
+                    <h3 className="text-xl font-semibold">Umbilical & Harnessing Engineer</h3>
+                    <span className="text-purple-400">January 2025 – Present</span>
                   </div>
-                  <p className="text-gray-400 mb-2">University Research Lab</p>
+                  <p className="text-gray-400 mb-2">Yellowjacket Space Program</p>
                   <ul className="list-disc list-inside text-gray-300 space-y-1">
-                    <li>Worked on power electronics research project focused on DC-DC converters</li>
-                    <li>Designed and simulated circuit models using industry software</li>
-                    <li>Contributed to research paper on converter optimization</li>
-                    <li>Presented findings at university research symposium</li>
+                    <li>Designed interface PCBs for rocket ground-to-flight comms and abort logic</li>
+                    <li>Implemented rocket harness with 8+ Ethernet lines and 20+ signal channels</li>
+                    <li>Integrated PTs, RTDs, TCs, valves, and sensor routing across avionics stack</li>
                   </ul>
                 </div>
+
               </div>
             </section>
+          </div>
+
 
             <section>
               <div className="flex items-center gap-2 mb-4">
@@ -140,7 +183,7 @@ const Resume = () => {
             <section>
               <div className="flex items-center gap-2 mb-4">
                 <Award size={20} className="text-purple-400" />
-                <h2 className="text-2xl font-bold">Certifications & Awards</h2>
+                <h2 className="text-2xl font-bold">Certifications, Awards, Test Scores</h2>
               </div>
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <ul className="list-disc list-inside text-gray-300 space-y-3">
@@ -149,7 +192,10 @@ const Resume = () => {
                     GPA of 4.0 all semesters (2024-Present)
                   </li>
                   <li>
-                    <span className="font-semibold text-white">National Merit Scholarship</span> - 
+                    <span className="font-semibold text-white">National Merit Scholarship</span>
+                  </li>
+                  <li>
+                    <span className="font-semibold text-white">Perfect 36 ACT Score</span>
                   </li>
                   <li>
                     <span className="font-semibold text-white">10x Top 4 Medalist at State Tournament</span> - 
