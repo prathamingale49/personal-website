@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Layout } from '../components/Layout';
 import { FileDown, Award, Book, Briefcase, Cpu, Download } from 'lucide-react';
@@ -56,7 +55,6 @@ const Resume = () => {
               </div>
 
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
-
                 {/* SpaceX */}
                 <div className="mb-6 pb-6 border-b border-gray-700">
                   <div className="flex justify-between mb-1">
@@ -122,11 +120,8 @@ const Resume = () => {
                     <li>Integrated PTs, RTDs, TCs, valves, and sensor routing across avionics stack</li>
                   </ul>
                 </div>
-
               </div>
             </section>
-          </div>
-
 
             <section>
               <div className="flex items-center gap-2 mb-4">
