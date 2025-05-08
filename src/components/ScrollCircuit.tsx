@@ -56,31 +56,32 @@ export const ScrollCircuit: React.FC = () => {
     const createCircuitNodes = () => {
       nodesRef.current = [];
       const totalHeight = document.body.scrollHeight;
-      const nodeDistance = 150; // Adjusted for better spacing
+      const nodeDistance = 120; // Decreased from 150 to fit more nodes
       
-      // Create structured circuit paths
+      // Create structured circuit paths with more nodes
       const createCircuitPath = (startX: number, startY: number, width: number, height: number, numNodes: number) => {
         const nodes: CircuitNode[] = [];
         const stepX = width / (numNodes - 1);
         const stepY = height / (numNodes - 1);
         
-        // Create nodes in a rectangular pattern
+        // Create nodes in a rectangular pattern with randomized component types
         for (let i = 0; i < numNodes; i++) {
           const x = startX + (i * stepX);
           const y = startY + (i * stepY);
-          const type = componentCycle[i % componentCycle.length];
+          // Randomly select component type
+          const type = componentCycle[Math.floor(Math.random() * componentCycle.length)];
           nodes.push(createNode(x, y, type));
         }
         return nodes;
       };
 
-      // Create main circuit paths
+      // Create more circuit paths with more nodes
       const leftCircuit = createCircuitPath(
-        window.innerWidth * 0.2,
+        window.innerWidth * 0.15,
         100,
         window.innerWidth * 0.2,
         totalHeight - 200,
-        8
+        12 // Increased from 8 to 12
       );
       
       const centerCircuit = createCircuitPath(
@@ -88,15 +89,32 @@ export const ScrollCircuit: React.FC = () => {
         100,
         window.innerWidth * 0.2,
         totalHeight - 200,
-        8
+        12 // Increased from 8 to 12
       );
       
       const rightCircuit = createCircuitPath(
-        window.innerWidth * 0.6,
+        window.innerWidth * 0.65,
         100,
         window.innerWidth * 0.2,
         totalHeight - 200,
-        8
+        12 // Increased from 8 to 12
+      );
+
+      // Add additional circuit paths
+      const extraLeftCircuit = createCircuitPath(
+        window.innerWidth * 0.25,
+        200,
+        window.innerWidth * 0.15,
+        totalHeight - 300,
+        10
+      );
+
+      const extraRightCircuit = createCircuitPath(
+        window.innerWidth * 0.6,
+        200,
+        window.innerWidth * 0.15,
+        totalHeight - 300,
+        10
       );
 
       // Connect nodes in a more circuit-like pattern
@@ -119,8 +137,23 @@ export const ScrollCircuit: React.FC = () => {
       connectCircuitPath(leftCircuit);
       connectCircuitPath(centerCircuit);
       connectCircuitPath(rightCircuit);
+      connectCircuitPath(extraLeftCircuit);
+      connectCircuitPath(extraRightCircuit);
+
+      // Connect main circuits horizontally
       connectCircuitsHorizontally(leftCircuit, centerCircuit);
       connectCircuitsHorizontally(centerCircuit, rightCircuit);
+      connectCircuitsHorizontally(extraLeftCircuit, extraRightCircuit);
+
+      // Add more complex connections
+      for (let i = 1; i < leftCircuit.length - 1; i += 2) {
+        if (leftCircuit[i] && extraLeftCircuit[i - 1]) {
+          connectNodes(leftCircuit[i], extraLeftCircuit[i - 1]);
+        }
+        if (rightCircuit[i] && extraRightCircuit[i - 1]) {
+          connectNodes(rightCircuit[i], extraRightCircuit[i - 1]);
+        }
+      }
 
       // Add some feedback loops
       for (let i = 2; i < leftCircuit.length - 2; i += 2) {
@@ -129,20 +162,26 @@ export const ScrollCircuit: React.FC = () => {
         }
       }
 
-      nodesRef.current = [...leftCircuit, ...centerCircuit, ...rightCircuit];
+      nodesRef.current = [
+        ...leftCircuit,
+        ...centerCircuit,
+        ...rightCircuit,
+        ...extraLeftCircuit,
+        ...extraRightCircuit
+      ];
     };
 
     const createNode = (x: number, y: number, type: CircuitNode["type"]): CircuitNode => ({
       x,
       y,
-      radius: 4,
+      radius: 8, // Increased from 4 to 8
       type,
       connections: [],
-      color: "#a855f7", // Neon purple for better visibility
+      color: "#a855f7",
       pulseRadius: 0,
-      maxPulseRadius: 18, // Increased for better visibility
+      maxPulseRadius: 24, // Increased from 18 to 24
       pulseActive: false,
-      pulseSpeed: 0.6,
+      pulseSpeed: 0.4, // Slowed down from 0.6
     });
 
     const connectNodes = (a: CircuitNode, b: CircuitNode) => {
@@ -353,8 +392,8 @@ export const ScrollCircuit: React.FC = () => {
           ctx.beginPath();
           ctx.moveTo(node.x, node.y);
           ctx.lineTo(conn.node.x, conn.node.y);
-          ctx.strokeStyle = 'rgba(168, 85, 247, 0.15)'; // Duller base line
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = 'rgba(168, 85, 247, 0.15)';
+          ctx.lineWidth = 2; // Increased from 1 to 2
           ctx.stroke();
 
           if (conn.active) {
@@ -368,7 +407,7 @@ export const ScrollCircuit: React.FC = () => {
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(conn.node.x, conn.node.y);
             ctx.strokeStyle = gradient;
-            ctx.lineWidth = 1.5;
+            ctx.lineWidth = 3; // Increased from 1.5 to 3
             ctx.stroke();
 
             // Draw moving dot with enhanced visibility
@@ -377,18 +416,18 @@ export const ScrollCircuit: React.FC = () => {
             const y = node.y + (conn.node.y - node.y) * progress;
             
             // Draw a larger, more visible electron dot
-            const dotGradient = ctx.createRadialGradient(x, y, 0, x, y, 5);
+            const dotGradient = ctx.createRadialGradient(x, y, 0, x, y, 7); // Increased from 5 to 7
             dotGradient.addColorStop(0, 'rgba(168, 85, 247, 1)');
             dotGradient.addColorStop(0.5, 'rgba(168, 85, 247, 0.8)');
             dotGradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
             
             ctx.beginPath();
-            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.arc(x, y, 7, 0, Math.PI * 2); // Increased from 5 to 7
             ctx.fillStyle = dotGradient;
             ctx.fill();
 
-            // Update position
-            conn.currentPosition += 0.02 * conn.direction;
+            // Update position with slower speed
+            conn.currentPosition += 0.015 * conn.direction; // Decreased from 0.02 to 0.015
             if (conn.currentPosition >= 1) {
               conn.currentPosition = 0;
             } else if (conn.currentPosition <= 0) {
