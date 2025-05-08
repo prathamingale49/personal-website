@@ -8,7 +8,7 @@ const Experience = () => {
       title: "Avionics Hardware Design Intern",
       company: "SpaceX – Starlink Aviation",
       period: "Fall 2025",
-      location: "Hawthorne, CA",
+      location: "Redmond, WA",
       description: "Details to be added after internship completion",
       achievements: [
         "Details to be added after internship completion"
@@ -19,7 +19,7 @@ const Experience = () => {
       title: "Cell Electronics Design Intern",
       company: "Tesla – Cell Manufacturing",
       period: "Summer 2025",
-      location: "Austin, TX",
+      location: "San Diego, CA",
       description: "Details to be added after internship completion",
       achievements: [
         "Details to be added after internship completion"
