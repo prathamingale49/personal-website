@@ -176,6 +176,42 @@ const Resume = () => {
               </div>
             </section>
 
+            <div className="space-y-8">
+            <section>
+              <div className="flex items-center gap-2 mb-4">
+                <Briefcase size={20} className="text-purple-400" />
+                <h2 className="text-2xl font-bold">Projects</h2>
+              </div>
+
+              <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
+                {/* SpaceX */}
+                <div className="mb-6 pb-6 border-b border-gray-700">
+                  <div className="flex justify-between mb-1">
+                    <h3 className="text-xl font-semibold">Embedded Smart Belt</h3>
+                    <span className="text-purple-400">April 2024</span>
+                  </div>
+                  <p className="text-gray-400 mb-2">A belt to detect obstacles for the visually impaired</p>
+                  <ul className="list-disc list-inside text-gray-300 space-y-1">
+                    <li>Belt built using an Arduino, ultrasonic & infrared sensors, 3 speakers, and 2 vibration motors</li>
+                    <li>85%+ accuracy in head, waist, and foot level obstacle detection and floor drop off detection</li>
+                  </ul>
+                </div>
+
+                {/* Tesla */}
+                <div className="mb-6 pb-6 border-b border-gray-700">
+                  <div className="flex justify-between mb-1">
+                    <h3 className="text-xl font-semibold">LED Chaser PCB</h3>
+                    <span className="text-purple-400">October 2024</span>
+                  </div>
+                  <p className="text-gray-400 mb-2">LED Chaser PCB that varies speed of chaser pattern</p>
+                  <ul className="list-disc list-inside text-gray-300 space-y-1">
+                    <li>Designed, simulated, and fabricated a timer-controlled LED game using NE555 and CD4017</li>
+                    <li>Built schematic, layout, and BOM in Altium and debugged circuit on breadboard pre-fab</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             <section>
               <div className="flex items-center gap-2 mb-4">
                 <Award size={20} className="text-purple-400" />
@@ -202,6 +238,7 @@ const Resume = () => {
             </section>
           </div>
         </div>
+      </div>
       </div>
     </Layout>
   );
