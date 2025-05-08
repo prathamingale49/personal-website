@@ -21,28 +21,27 @@ const Resume = () => {
                 <h2 className="text-2xl font-bold text-white mb-2">Your Name</h2>
                 <h3 className="text-xl text-purple-300 mb-4">Electrical Engineering Student</h3>
                 <p className="text-gray-300 mb-4">
-                  Passionate electrical engineering student with hands-on experience in circuit design, 
-                  embedded systems, and power electronics. Seeking opportunities to apply technical knowledge 
-                  and problem-solving skills in a challenging internship or entry-level position.
+                  Builder of mission-critical hardware and systems with hands-on experience in PCB design, power electronics, and embedded systems.
+                  I specialize in building reliable, test-ready boards for aerospace and energy applications.
                 </p>
               </div>
               <div className="w-full md:w-1/3">
                 <div className="text-gray-300">
                   <div className="flex items-center gap-2 mb-2">
                     <span>📧</span>
-                    <span>your.email@example.com</span>
+                    <span>pratham.ing49@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-2 mb-2">
                     <span>📱</span>
-                    <span>(123) 456-7890</span>
+                    <span>(704) 431-7206</span>
                   </div>
                   <div className="flex items-center gap-2 mb-2">
                     <span>🔗</span>
-                    <a href="https://linkedin.com/in/yourprofile" className="text-purple-400 hover:underline">LinkedIn</a>
+                    <a href="https://linkedin.com/in/pratham-ingale/" className="text-purple-400 hover:underline">LinkedIn</a>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>🌐</span>
-                    <a href="https://github.com/yourusername" className="text-purple-400 hover:underline">GitHub</a>
+                    <a href="https://github.com/prathamingale49" className="text-purple-400 hover:underline">GitHub</a>
                   </div>
                 </div>
               </div>
@@ -94,13 +93,13 @@ const Resume = () => {
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <div className="flex justify-between mb-1">
                   <h3 className="text-xl font-semibold">Bachelor of Science in Electrical Engineering</h3>
-                  <span className="text-purple-400">2020 - 2024 (Expected)</span>
+                  <span className="text-purple-400">2024 - 2026 (Expected)</span>
                 </div>
-                <p className="text-gray-400 mb-2">University Name</p>
-                <p className="text-white">GPA: 3.8/4.0</p>
+                <p className="text-gray-400 mb-2">Georgia Institute of Technology</p>
+                <p className="text-white">GPA: 4.0/4.0</p>
                 <p className="text-gray-300 mt-2">
-                  Relevant coursework: Circuit Analysis, Digital Systems, Signals and Systems, 
-                  Electromagnetic Fields, Power Electronics, Microcontroller Applications
+                  Relevant coursework: Circuit Analysis, Digital Systems, Signals Processing, 
+                  Embedded Programming, Object Oriented Programming, Differential Equations, Multivariable Calculus
                 </p>
               </div>
             </section>
@@ -146,20 +145,15 @@ const Resume = () => {
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
                 <ul className="list-disc list-inside text-gray-300 space-y-3">
                   <li>
-                    <span className="font-semibold text-white">IEEE Student Competition</span> - 
-                    2nd Place, IoT Device Category (2023)
+                    <span className="font-semibold text-white">Faculty Honors & Dean's List</span> - 
+                    GPA of 4.0 all semesters (2024-Present)
                   </li>
                   <li>
-                    <span className="font-semibold text-white">Dean's List</span> - 
-                    All semesters (2020-Present)
+                    <span className="font-semibold text-white">National Merit Scholarship</span> - 
                   </li>
                   <li>
-                    <span className="font-semibold text-white">Academic Merit Scholarship</span> - 
-                    Full tuition coverage (2020-2024)
-                  </li>
-                  <li>
-                    <span className="font-semibold text-white">Certified LabVIEW Associate Developer</span> - 
-                    National Instruments (2022)
+                    <span className="font-semibold text-white">10x Top 4 Medalist at State Tournament</span> - 
+                    NC Science Olympiad (2019-2024)
                   </li>
                 </ul>
               </div>
