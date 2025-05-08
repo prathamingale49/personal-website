@@ -16,7 +16,7 @@ const About = () => {
             <div>
               <div className="w-full aspect-square max-w-md mx-auto bg-gray-800 rounded-2xl overflow-hidden border-4 border-purple-500/30">
                 <img 
-                  src="aboutmephoto.jpg" 
+                  src="/images/aboutmephoto.jpg" 
                   alt="Pratham Ingale" 
                   className="w-full h-full object-cover"
                 />

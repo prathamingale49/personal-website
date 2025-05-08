@@ -10,21 +10,21 @@ export const ProjectsSection: React.FC = () => {
       title: "Battery Management System",
       description: "Designed and implemented a comprehensive BMS for the Yellowjacket Space Program's rocket, featuring power sequencing, power conversion and distribution, and battery management.",
       tags: ["Schematic Design", "PCB Layout Design", "Embedded Systems", "Altium", "Power Electronics", "PCBA Debugging"],
-      image: "dbms.jpg"
+      image: "/images/dbms.jpg"
     },
     {
       id: "umbilical-system",
       title: "Rocket Umbilical System",
       description: "Developed the interface system between ground support equipment and the rocket, including power distribution, sensor integration, and data acquisition capabilities.",
       tags: ["Schematic Design", "PCB Layout Design", "Signal Integrity", "Altium", "System Integration"],
-      image: "umbilical.jpg"
+      image: "/images/umbilical.jpg"
     },
     {
       id: "smart-belt",
       title: "Smart Navigation Belt",
       description: "Created an assistive device for visually impaired individuals using ultrasonic sensors and haptic feedback to detect obstacles and provide navigation assistance.",
       tags: ["Arduino", "Ultrasonic & IR Sensors", "Embedded Systems", "Breadboard Prototyping", "Hardware Validation & Debugging"],
-      image: "smartbelt.jpg"
+      image: "/images/smartbelt.jpg"
     }
   ];
 
