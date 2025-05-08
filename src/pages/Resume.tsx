@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Layout } from '../components/Layout';
-import { FileDown, Award, Book, Briefcase, Cpu, Download } from 'lucide-react';
+import { FileDown, Award, Book, Briefcase, Cpu, Download, WrenchIcon } from 'lucide-react';
 
 const Resume = () => {
   return (
@@ -179,12 +179,11 @@ const Resume = () => {
             <div className="space-y-8">
             <section>
               <div className="flex items-center gap-2 mb-4">
-                <Briefcase size={20} className="text-purple-400" />
+                <WrenchIcon size={20} className="text-purple-400" />
                 <h2 className="text-2xl font-bold">Projects</h2>
               </div>
 
               <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-6">
-                {/* SpaceX */}
                 <div className="mb-6 pb-6 border-b border-gray-700">
                   <div className="flex justify-between mb-1">
                     <h3 className="text-xl font-semibold">Embedded Smart Belt</h3>
@@ -197,7 +196,6 @@ const Resume = () => {
                   </ul>
                 </div>
 
-                {/* Tesla */}
                 <div className="mb-6 pb-6 border-b border-gray-700">
                   <div className="flex justify-between mb-1">
                     <h3 className="text-xl font-semibold">LED Chaser PCB</h3>
