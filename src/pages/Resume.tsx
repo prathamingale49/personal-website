@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Layout } from '../components/Layout';
 import { FileDown, Award, Book, Briefcase, Cpu, Download, WrenchIcon } from 'lucide-react';
@@ -10,9 +9,13 @@ const Resume = () => {
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-bold text-purple-300">Resume</h1>
-            <button className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors">
+            <a 
+              href="/Pratham_Ingale_Resume.pdf" 
+              download="Pratham_Ingale_Resume.pdf"
+              className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors"
+            >
               <Download size={18} /> Download PDF
-            </button>
+            </a>
           </div>
 
           <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-8 mb-8">
