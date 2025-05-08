@@ -9,13 +9,6 @@ const Resume = () => {
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-bold text-purple-300">Resume</h1>
-            <a 
-              href="/Pratham_Ingale_Resume.pdf" 
-              download="Pratham_Ingale_Resume.pdf"
-              className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors"
-            >
-              <Download size={18} /> Download PDF
-            </a>
           </div>
 
           <div className="bg-gray-800/60 border border-gray-700 rounded-lg p-8 mb-8">
@@ -35,10 +28,6 @@ const Resume = () => {
                   <a href="mailto:pratham.ing49@gmail.com" className="text-purple-400 hover:underline">
                     pratham.ing49@gmail.com
                   </a>
-                </div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span>📱</span>
-                  <span>(704) 431-7206</span>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <span>🔗</span>
