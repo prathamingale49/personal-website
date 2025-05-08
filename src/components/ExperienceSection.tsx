@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const ExperienceSection: React.FC = () => {
@@ -31,8 +30,8 @@ export const ExperienceSection: React.FC = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-3">Experience</h2>
-      <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 mb-8"></div>
+      <h2 className="text-3xl font-bold mb-3 text-purple-300">Experience</h2>
+      <div className="h-1 w-24 bg-gradient-to-r from-purple-400 to-fuchsia-500 mb-8"></div>
       <p className="text-gray-300 mb-12 max-w-3xl text-center mx-auto w-fit">
         My recent professional experience includes internships and leadership roles at technical clubs, all of which have helped me develop my technical and soft skills.
       </p>
@@ -42,16 +41,16 @@ export const ExperienceSection: React.FC = () => {
           <div key={index} className="relative">
             {/* Timeline connector */}
             {index < experiences.length && (
-              <div className="absolute left-8 top-14 w-1 h-[calc(100%-3.5rem)] bg-gradient-to-b from-cyan-400 to-blue-500"></div>
+              <div className="absolute left-8 top-14 w-1 h-[calc(100%-3.5rem)] bg-gradient-to-b from-purple-400 to-fuchsia-500"></div>
             )}
             
             <div className="flex gap-12">
               {/* Circle marker */}
-              <div className="mt-1.5 w-4 h-4 rounded-full bg-cyan-400 flex-shrink-0 relative z-10 ring-4 ring-gray-800"></div>
+              <div className="mt-1.5 w-4 h-4 rounded-full bg-purple-400 flex-shrink-0 relative z-10 ring-4 ring-gray-800"></div>
               
               <div className="flex-1 flex flex-col items-center text-center pl-2">
                 <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
-                <div className="text-cyan-300 font-medium mb-1">{exp.company}</div>
+                <div className="text-purple-300 font-medium mb-1">{exp.company}</div>
                 <div className="text-sm text-gray-400 mb-3">{exp.period}</div>
                 <p className="text-gray-300 max-w-2xl">{exp.description}</p>
               </div>
