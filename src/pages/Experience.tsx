@@ -166,7 +166,7 @@ const Experience = () => {
                 </p>
               </div>
 
-              <div className="mb-6 pb-6 border-b border-gray-700">
+              <div>
                 <div className="flex justify-between mb-1">
                   <h3 className="text-lg font-semibold">STEM Outreach Volunteer</h3>
                   <span className="text-purple-400 text-sm">2022 - Present</span>
@@ -176,18 +176,6 @@ const Experience = () => {
                   Conducted workshops introducing high school students to electrical engineering concepts 
                   through hands-on projects. Demonstrated circuit building and programming basics to spark 
                   interest in STEM careers.
-                </p>
-              </div>
-              
-              <div>
-                <div className="flex justify-between mb-1">
-                  <h3 className="text-lg font-semibold">Technology Tutor</h3>
-                  <span className="text-purple-400 text-sm">2021 - 2022</span>
-                </div>
-                <p className="text-gray-400 mb-2">Community Center</p>
-                <p className="text-gray-300">
-                  Provided technology assistance to senior citizens, helping them learn to use digital 
-                  devices and navigate online services. Developed simplified guides for common tasks.
                 </p>
               </div>
             </div>
