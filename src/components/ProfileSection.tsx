@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
@@ -37,10 +36,11 @@ export const ProfileSection: React.FC = () => {
         <div className="lg:w-1/2 flex justify-center">
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-purple-500/30 to-fuchsia-500/30 flex items-center justify-center p-2">
-              {/* Replace with your own image */}
-              <div className="w-full h-full bg-gray-800 rounded-full flex items-center justify-center text-5xl">
-                👨‍💻
-              </div>
+              <img 
+                src="/images/(7).jpg" 
+                alt="Pratham Ingale" 
+                className="w-full h-full object-cover rounded-full"
+              />
             </div>
             <div className="absolute -z-10 top-0 left-0 w-full h-full rounded-full bg-purple-400/20 blur-xl"></div>
           </div>

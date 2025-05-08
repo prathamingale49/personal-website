@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Layout } from '../components/Layout';
 import { Heart, BookOpen, GraduationCap, Cpu, Zap, MessageCircle } from 'lucide-react';
@@ -16,10 +15,11 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div>
               <div className="w-full aspect-square max-w-md mx-auto bg-gray-800 rounded-2xl overflow-hidden border-4 border-purple-500/30">
-                {/* Replace with your actual image */}
-                <div className="w-full h-full flex items-center justify-center text-8xl">
-                  👨‍💻
-                </div>
+                <img 
+                  src="/images/img_4072.jpg" 
+                  alt="Pratham Ingale" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
