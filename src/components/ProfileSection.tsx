@@ -37,7 +37,7 @@ export const ProfileSection: React.FC = () => {
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-purple-500/30 to-fuchsia-500/30 flex items-center justify-center p-2">
               <img 
-                src="/images/(7).jpg" 
+                src="profilephoto.jpg" 
                 alt="Pratham Ingale" 
                 className="w-full h-full object-cover rounded-full"
               />
