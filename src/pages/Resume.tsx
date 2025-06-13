@@ -165,7 +165,7 @@ const Resume = () => {
                       <li>Circuit Simulation (LTSpice, PSpice)</li>
                       <li>Soldering & Rework (SMD, THT, QFN, BGA)</li>
                       <li>DC-DC Converters (Buck, Boost, LDO)</li>
-                      <li>OScilloscopes, Logic Analyzers, Multimeters</li>
+                      <li>Oscilloscopes, Logic Analyzers, Multimeters</li>
                       <li>Harnessing, Signal Debug, HITL Testbeds</li>
                     </ul>
                   </div>

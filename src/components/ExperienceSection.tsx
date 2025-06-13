@@ -30,7 +30,7 @@ export const ExperienceSection: React.FC = () => {
       title: "Battery Management System Responsible Engineer",
       company: "Yellowjacket Space Program",
       period: "January 2025 - Present",
-      description: "Layout and schematic design of a 4-layer PCB intended for power management, including Buck/Boost Converters, Load Switches, LDOs, MOSFETs, Op-Amps, and Microcontrollers. Revised 6-layer PCB utilizing similar strucutre."
+      description: "Layout and schematic design of a 4-layer PCB intended for power management, including Buck/Boost converters, load switches, LDOs, MOSFETs, op-amps, and microcontrollers. Revised a 6-layer PCB utilizing a similar structure."
     }
   ];
 
@@ -46,7 +46,7 @@ export const ExperienceSection: React.FC = () => {
         {experiences.map((exp, index) => (
           <div key={index} className="relative">
             {/* Timeline connector */}
-            {index < experiences.length && (
+            {index < experiences.length - 1 && (
               <div className="absolute left-8 top-14 w-1 h-[calc(100%-3.5rem)] bg-gradient-to-b from-purple-400 to-fuchsia-500"></div>
             )}
             
