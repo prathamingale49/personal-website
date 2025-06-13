@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
         <div className="h-px bg-zinc-800 my-6"></div>
         
         <div className="text-center text-gray-600 text-sm">
-          © {currentYear} Your Name. All rights reserved.
+          © {currentYear} Pratham Ingale. All rights reserved.
         </div>
       </div>
     </footer>

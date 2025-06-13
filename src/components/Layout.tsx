@@ -13,17 +13,20 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   useEffect(() => {
     // For smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href) {
-          document.querySelector(href)?.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+    const anchors = Array.from(document.querySelectorAll('a[href^="#"]'));
+    const handleClick = function (this: HTMLAnchorElement, e: Event) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href) {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    anchors.forEach(anchor => anchor.addEventListener('click', handleClick));
+
+    return () => {
+      anchors.forEach(anchor => anchor.removeEventListener('click', handleClick));
+    };
   }, []);
 
   return (

@@ -26,7 +26,7 @@ const About = () => {
             <div className="flex flex-col justify-center">
               <h2 className="text-2xl font-bold text-white mb-4">Hello, I'm Pratham Ingale</h2>
               <p className="text-gray-300 mb-4">
-                I'm an electrical engineering student at Georgia Tech with a passion for building real, test-ready hardware—especially in avionics, power electronics, and embedded systems. I thrive on turning schematics into tangilbe boards, debugging systems under pressure, and designing hardware that works.
+                I'm an electrical engineering student at Georgia Tech with a passion for building real, test-ready hardware—especially in avionics, power electronics, and embedded systems. I thrive on turning schematics into tangible boards, debugging systems under pressure, and designing hardware that works.
               </p>
               <p className="text-gray-300 mb-6">
                 Currently, I'm designing high reliability electronics through hands-on internships and leadership roles in student rocketry. From rocket BMS PCBs to DC-DC converters and HITL validation platforms, I'm focused on creating robust, efficient systems that can survive demanding environments.
