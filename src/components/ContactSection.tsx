@@ -101,6 +101,14 @@ export const ContactSection: React.FC = () => {
                   <p className="text-gray-300">github.com/prathamingale49</p>
                 </div>
               </div>
+              
+              <div className="flex items-start gap-4">
+                <CircleDashed className="text-purple-400 mt-1" />
+                <div className="text-left">
+                  <h4 className="font-medium text-white">X (Twitter)</h4>
+                  <p className="text-gray-300">x.com/PrathamIng49</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

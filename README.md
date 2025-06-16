@@ -55,4 +55,5 @@ A modern, responsive portfolio website for Pratham Ingale, an electrical enginee
 ## Contact
 - **LinkedIn:** [Pratham Ingale](https://linkedin.com/in/pratham-ingale/)
 - **GitHub:** [prathamingale49](https://github.com/prathamingale49)
+- **X (Twitter):** [@PrathamIng49](https://x.com/PrathamIng49)
 - **Email:** pratham.ing49@gmail.com

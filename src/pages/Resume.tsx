@@ -51,6 +51,17 @@ const Resume = () => {
                     GitHub
                   </a>
                 </div>
+                <div className="flex items-center gap-2">
+                  <span>🐦</span>
+                  <a
+                    href="https://x.com/PrathamIng49"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:underline"
+                  >
+                    X (Twitter)
+                  </a>
+                </div>
                 </div>
               </div>
             </div>
