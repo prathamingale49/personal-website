@@ -40,7 +40,7 @@ const Resume = () => {
                     LinkedIn
                   </a>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 mb-2">
                   <span>🌐</span>
                   <a
                     href="https://github.com/prathamingale49"
@@ -51,8 +51,11 @@ const Resume = () => {
                     GitHub
                   </a>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span>🐦</span>
+                <div className="flex items-center gap-2 mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
+                    <path d="M18 6 7 17l-5-5"></path>
+                    <path d="m22 10-7.5 7.5L13 16"></path>
+                  </svg>
                   <a
                     href="https://x.com/PrathamIng49"
                     target="_blank"
