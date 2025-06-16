@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from '../components/Layout';
-import { Heart, BookOpen, GraduationCap, Cpu, Zap, MessageCircle } from 'lucide-react';
+import { Heart, BookOpen, GraduationCap, Cpu, Zap, MessageCircle, X } from 'lucide-react';
 
 const About = () => {
   return (
@@ -63,10 +63,7 @@ const About = () => {
                   rel="noopener noreferrer"
                   className="bg-gray-800 hover:bg-gray-700 px-3 py-1.5 rounded-full flex items-center gap-1.5 transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
-                    <path d="M18 6 7 17l-5-5"></path>
-                    <path d="m22 10-7.5 7.5L13 16"></path>
-                  </svg>
+                  <X size={16} className="text-purple-400" />
                   <span className="text-gray-300 text-sm">X</span>
                 </a>
                 <a 
